@@ -130,19 +130,28 @@ import FAQ from '../components/sections/FAQ.astro';
   const CARD_GAP = 16;
   const OFFSCREEN_OFFSET = CARD_WIDTH + CARD_GAP;
 
+  interface CarouselDom {
+    section: HTMLElement;
+    screen: HTMLElement | null;
+    cards: HTMLElement[];
+    dots: HTMLElement | null;
+  }
+
   const carousels: Record<string, CarouselState> = {
     feature: { current: 0, total: 3, dragging: false, startX: 0, startY: 0, startTime: 0, currentTranslateX: 0, directionLocked: null, scale: 1 },
     voice:   { current: 0, total: 4, dragging: false, startX: 0, startY: 0, startTime: 0, currentTranslateX: 0, directionLocked: null, scale: 1 },
     honesty: { current: 0, total: 3, dragging: false, startX: 0, startY: 0, startTime: 0, currentTranslateX: 0, directionLocked: null, scale: 1 },
   };
+  const carouselDom: Record<string, CarouselDom> = {};
+  const dragFrames: Record<string, number> = {};
+  const dragDiffs: Record<string, number> = {};
+  const initialized = new Set<string>();
 
   /* ============================================
      Scale factor helper
      ============================================ */
   function getScale(name: string): number {
-    const section = document.querySelector(`[data-carousel-section="${name}"]`);
-    if (!section) return 1;
-    const screen = section.closest('.screen') as HTMLElement;
+    const screen = carouselDom[name]?.screen;
     if (!screen) return 1;
     const match = screen.style.transform.match(/scale\(([^)]+)\)/);
     return match ? parseFloat(match[1]) : 1;
@@ -152,53 +161,108 @@ import FAQ from '../components/sections/FAQ.astro';
      Card element helpers
      ============================================ */
   function getCards(name: string): HTMLElement[] {
-    const section = document.querySelector(`[data-carousel-section="${name}"]`);
-    if (!section) return [];
-    return Array.from(section.querySelectorAll<HTMLElement>('[class*="main_0"]'));
+    return carouselDom[name]?.cards ?? [];
   }
 
   function getCardByIndex(name: string, index: number): HTMLElement | null {
-    const section = document.querySelector(`[data-carousel-section="${name}"]`);
-    if (!section) return null;
-    return section.querySelector<HTMLElement>(`.main_0${index + 1}`);
+    const cards = getCards(name);
+    return cards[index] ?? null;
   }
 
   /* ============================================
      Dot indicator helpers
      ============================================ */
   function updateDots(name: string, index: number) {
-    const dotsContainer = document.querySelector(
-      `.carousel-dots[data-carousel="${name}"]`
-    );
+    const dotsContainer = carouselDom[name]?.dots;
     if (!dotsContainer) return;
     dotsContainer.querySelectorAll('.dot').forEach((dot, i) => {
       dot.classList.toggle('active', i === index);
     });
   }
 
-  function createDots() {
-    Object.keys(carousels).forEach((name) => {
-      const dotsContainer = document.querySelector(
-        `.carousel-dots[data-carousel="${name}"]`
-      );
-      if (!dotsContainer) return;
+  function createDotsFor(name: string) {
+    const dotsContainer = carouselDom[name]?.dots;
+    if (!dotsContainer) return;
+    if (dotsContainer.childElementCount > 0) return;
 
-      const total = carousels[name].total;
-      for (let i = 0; i < total; i++) {
-        const dot = document.createElement('span');
-        dot.className = 'dot' + (i === 0 ? ' active' : '');
-        dot.dataset.index = String(i);
-        dot.dataset.carousel = name;
-        dot.setAttribute('aria-label', `スライド ${i + 1}`);
+    const total = carousels[name].total;
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement('span');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.dataset.index = String(i);
+      dot.dataset.carousel = name;
+      dot.setAttribute('aria-label', `スライド ${i + 1}`);
 
-        dot.addEventListener('click', function (this: HTMLElement) {
-          const n = this.dataset.carousel!;
-          const idx = parseInt(this.dataset.index!, 10);
-          showSlide(n, idx);
-        });
+      dot.addEventListener('click', function (this: HTMLElement) {
+        const n = this.dataset.carousel!;
+        const idx = parseInt(this.dataset.index!, 10);
+        if (!initialized.has(n)) initCarousel(n);
+        showSlide(n, idx);
+      });
 
-        dotsContainer.appendChild(dot);
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  function clearDraggingClasses(name: string) {
+    getCards(name).forEach((card) => card.classList.remove('carousel-dragging'));
+  }
+
+  function applyDrag(name: string, designDiffX: number) {
+    const state = carousels[name];
+    const cards = getCards(name);
+    if (!state || cards.length === 0) return;
+
+    const total = state.total;
+    const activeCard = cards[state.current];
+    const prevCard = cards[(state.current - 1 + total) % total];
+    const nextCard = cards[(state.current + 1) % total];
+
+    if (activeCard) {
+      activeCard.style.transform = `translateX(${designDiffX}px)`;
+    }
+
+    const setAdjacent = (card: HTMLElement | undefined, offset: number, progress: number) => {
+      if (!card) return;
+      card.classList.add('carousel-adjacent');
+      card.style.opacity = String(Math.max(0.3, progress));
+      card.style.transform = `translateX(${offset}px)`;
+    };
+
+    if (designDiffX < 0) {
+      const progress = Math.min(1, Math.abs(designDiffX) / SWIPE_THRESHOLD);
+      setAdjacent(nextCard, OFFSCREEN_OFFSET + designDiffX, progress);
+      if (prevCard) {
+        prevCard.style.opacity = '';
+        prevCard.style.transform = `translateX(-${OFFSCREEN_OFFSET}px)`;
       }
+    } else if (designDiffX > 0) {
+      const progress = Math.min(1, Math.abs(designDiffX) / SWIPE_THRESHOLD);
+      setAdjacent(prevCard, -OFFSCREEN_OFFSET + designDiffX, progress);
+      if (nextCard) {
+        nextCard.style.opacity = '';
+        nextCard.style.transform = `translateX(${OFFSCREEN_OFFSET}px)`;
+      }
+    } else {
+      if (prevCard) {
+        prevCard.style.opacity = '';
+        prevCard.style.transform = `translateX(-${OFFSCREEN_OFFSET}px)`;
+      }
+      if (nextCard) {
+        nextCard.style.opacity = '';
+        nextCard.style.transform = `translateX(${OFFSCREEN_OFFSET}px)`;
+      }
+    }
+  }
+
+  function scheduleDrag(name: string, designDiffX: number) {
+    dragDiffs[name] = designDiffX;
+    if (dragFrames[name]) return;
+    dragFrames[name] = requestAnimationFrame(() => {
+      dragFrames[name] = 0;
+      const diff = dragDiffs[name];
+      if (diff === undefined) return;
+      applyDrag(name, diff);
     });
   }
 
@@ -259,17 +323,15 @@ import FAQ from '../components/sections/FAQ.astro';
       || btn.classList.contains('reviews__slider-prev');
     const direction = isPrev ? -1 : 1;
 
+    if (!initialized.has(name)) initCarousel(name);
     showSlide(name, carousels[name].current + direction);
   });
 
   /* ============================================
      Touch drag support (real-time tracking)
      ============================================ */
-  function initDrag() {
-    Object.keys(carousels).forEach((name) => {
-      const container = document.querySelector(
-        `[data-carousel-section="${name}"]`
-      ) as HTMLElement;
+  function initDragFor(name: string) {
+      const container = carouselDom[name]?.section;
       if (!container) return;
 
       /* ---------- touchstart ---------- */
@@ -312,7 +374,7 @@ import FAQ from '../components/sections/FAQ.astro';
           } else {
             state.directionLocked = 'vertical';
             state.dragging = false;
-            getCards(name).forEach(c => c.classList.remove('carousel-dragging'));
+            clearDraggingClasses(name);
             return;
           }
         }
@@ -326,34 +388,7 @@ import FAQ from '../components/sections/FAQ.astro';
         const designDiffX = rawDiffX / state.scale;
 
         state.currentTranslateX = designDiffX;
-
-        // Move active card with finger
-        const activeCard = getCardByIndex(name, state.current);
-        if (activeCard) {
-          activeCard.style.transform = `translateX(${designDiffX}px)`;
-        }
-
-        // Move adjacent card into view (peek effect) — wraps around
-        const total = state.total;
-        if (designDiffX < 0) {
-          // Swiping left → show next (wraps)
-          const nextCard = getCardByIndex(name, (state.current + 1) % total);
-          if (nextCard) {
-            nextCard.classList.add('carousel-adjacent');
-            const progress = Math.min(1, Math.abs(designDiffX) / SWIPE_THRESHOLD);
-            nextCard.style.opacity = String(Math.max(0.3, progress));
-            nextCard.style.transform = `translateX(${OFFSCREEN_OFFSET + designDiffX}px)`;
-          }
-        } else if (designDiffX > 0) {
-          // Swiping right → show prev (wraps)
-          const prevCard = getCardByIndex(name, (state.current - 1 + total) % total);
-          if (prevCard) {
-            prevCard.classList.add('carousel-adjacent');
-            const progress = Math.min(1, Math.abs(designDiffX) / SWIPE_THRESHOLD);
-            prevCard.style.opacity = String(Math.max(0.3, progress));
-            prevCard.style.transform = `translateX(${-OFFSCREEN_OFFSET + designDiffX}px)`;
-          }
-        }
+        scheduleDrag(name, designDiffX);
       }) as EventListener, { passive: false });
 
       /* ---------- touchend ---------- */
@@ -363,7 +398,7 @@ import FAQ from '../components/sections/FAQ.astro';
         state.dragging = false;
 
         // Re-enable transitions for snap animation
-        getCards(name).forEach(c => c.classList.remove('carousel-dragging'));
+        clearDraggingClasses(name);
 
         const endX = e.changedTouches[0].clientX;
         const rawDiffX = endX - state.startX;
@@ -385,20 +420,49 @@ import FAQ from '../components/sections/FAQ.astro';
         showSlide(name, newIndex);
         state.directionLocked = null;
       }) as EventListener, { passive: true });
-    });
+  }
+
+  function initCarousel(name: string) {
+    if (initialized.has(name)) return;
+    if (!carouselDom[name]) return;
+    createDotsFor(name);
+    showSlide(name, 0);
+    initDragFor(name);
+    initialized.add(name);
   }
 
   /* ============================================
      Initialization
      ============================================ */
   document.addEventListener('DOMContentLoaded', () => {
-    createDots();
-
-    // Show the first slide for each carousel
     Object.keys(carousels).forEach((name) => {
-      showSlide(name, 0);
+      const section = document.querySelector(
+        `[data-carousel-section="${name}"]`
+      ) as HTMLElement | null;
+      if (!section) return;
+      const cards = Array.from(section.querySelectorAll<HTMLElement>('[class*="main_0"]'));
+      const dots = document.querySelector(
+        `.carousel-dots[data-carousel="${name}"]`
+      ) as HTMLElement | null;
+      const screen = section.closest('.screen') as HTMLElement | null;
+      carouselDom[name] = { section, screen, cards, dots };
     });
 
-    initDrag();
+    const root = document.querySelector('.lp-container') as HTMLElement | null;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const section = entry.target as HTMLElement;
+        const name = section.dataset.carouselSection;
+        if (!name) return;
+        initCarousel(name);
+        observer.unobserve(section);
+      });
+    }, { root, rootMargin: '120px 0px' });
+
+    Object.keys(carousels).forEach((name) => {
+      const section = carouselDom[name]?.section;
+      if (section) observer.observe(section);
+    });
   });
 </script>

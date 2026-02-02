@@ -1,6 +1,4 @@
 ---
-import '../styles/global.css';
-import '../styles/variables.css';
 import FixedFooter from '../components/ui/FixedFooter.astro';
 
 interface Props {
@@ -21,6 +19,20 @@ const { title } = Astro.props;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles/variables.css" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; list-style: none; }
+      html { -webkit-text-size-adjust: 100%; }
+      body { overflow: hidden; height: 100vh; height: 100dvh; font-family: var(--font-family); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+      img { max-width: 100%; display: block; }
+      a { text-decoration: none; color: inherit; }
+      input, button, select, textarea { border: none; background: none; font-family: inherit; font-size: inherit; }
+      button { cursor: pointer; }
+      .section { content-visibility: auto; contain-intrinsic-size: 440px 959px; }
+    </style>
+    <link rel="preload" href="/styles/global.css" as="style" />
+    <link rel="stylesheet" href="/styles/global.css" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="/styles/global.css" /></noscript>
     <title>{title}</title>
     <!-- Google Tag Manager -->
     <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -71,6 +83,9 @@ const { title } = Astro.props;
 <script>
   const DESIGN_WIDTH = 440;
   const DESIGN_HEIGHT = 959;
+  let screens = [];
+  let screenWrappers = [];
+  let resizeRaf = 0;
 
   function applyScale() {
     const vw = window.innerWidth;
@@ -81,19 +96,31 @@ const { title } = Astro.props;
     const scaledW = DESIGN_WIDTH * scale;
     const scaledH = DESIGN_HEIGHT * scale;
 
-    document.querySelectorAll<HTMLElement>('.screen').forEach((s) => {
+    screens.forEach((s) => {
       s.style.transform = `scale(${scale})`;
       s.style.transformOrigin = 'top left';
     });
 
-    document.querySelectorAll<HTMLElement>('.screen-wrapper').forEach((w) => {
+    screenWrappers.forEach((w) => {
       w.style.width = `${scaledW}px`;
       w.style.height = `${scaledH}px`;
     });
   }
 
-  window.addEventListener('DOMContentLoaded', applyScale);
-  window.addEventListener('resize', applyScale);
+  function scheduleApplyScale() {
+    if (resizeRaf) return;
+    resizeRaf = requestAnimationFrame(() => {
+      resizeRaf = 0;
+      applyScale();
+    });
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    screens = Array.from(document.querySelectorAll('.screen'));
+    screenWrappers = Array.from(document.querySelectorAll('.screen-wrapper'));
+    scheduleApplyScale();
+  });
+  window.addEventListener('resize', scheduleApplyScale);
 
   /* CTA smooth-scroll */
   document.addEventListener('click', (e) => {

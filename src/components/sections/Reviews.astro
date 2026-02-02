@@ -60,7 +60,11 @@
           <div class="reviews__card-author">yo3さん・1〜7歳</div>
         </div>
       </div>
-      <img class="reviews__dog-image" src="/img/adobestock-597728445-1.png" alt="" />
+      <picture>
+        <source srcset="/img/adobestock-597728445-1.avif" type="image/avif" />
+        <source srcset="/img/adobestock-597728445-1.webp" type="image/webp" />
+        <img class="reviews__dog-image" src="/img/adobestock-597728445-1.webp" alt="" loading="lazy" decoding="async" />
+      </picture>
       <div class="reviews__disclaimer">※個人の感想です。効果には個体差があります。<br />※ご購入から約10日後のレビューになります。</div>
     </div>
   </div>
