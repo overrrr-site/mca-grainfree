@@ -1,10 +1,7 @@
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
-
 const USER = 'admin';
 const PASS = 'password';
 
-export function middleware(request: NextRequest) {
+export default function middleware(request: Request) {
   const authHeader = request.headers.get('authorization');
 
   if (authHeader) {
@@ -13,12 +10,12 @@ export function middleware(request: NextRequest) {
       const decoded = atob(encoded);
       const [user, pass] = decoded.split(':');
       if (user === USER && pass === PASS) {
-        return NextResponse.next();
+        return;
       }
     }
   }
 
-  return new NextResponse('Authentication required', {
+  return new Response('Authentication required', {
     status: 401,
     headers: {
       'WWW-Authenticate': 'Basic realm="Restricted"',
