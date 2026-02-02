@@ -72,35 +72,110 @@ import FAQ from '../components/sections/FAQ.astro';
   .slider-btn:active {
     transform: scale(0.85);
   }
+
+  /* ==========================================
+     Carousel card transition states
+     ========================================== */
+
+  /* All carousel cards: opacity-based visibility instead of display:none */
+  [data-carousel-section] [class*="main_0"] {
+    display: flex !important;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      opacity 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* Active (visible) card */
+  [data-carousel-section] [class*="main_0"].carousel-active {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 2;
+  }
+
+  /* Disable transition during finger drag */
+  [data-carousel-section] [class*="main_0"].carousel-dragging {
+    transition: none !important;
+  }
+
+  /* Adjacent cards (peek during drag) */
+  [data-carousel-section] [class*="main_0"].carousel-adjacent {
+    z-index: 1;
+  }
 </style>
 
 <script>
   /* ============================================
      Carousel state
      ============================================ */
-  const carousels: Record<string, { current: number; total: number }> = {
-    feature: { current: 0, total: 3 },
-    voice:   { current: 0, total: 4 },
-    honesty: { current: 0, total: 3 },
+  interface CarouselState {
+    current: number;
+    total: number;
+    dragging: boolean;
+    startX: number;
+    startY: number;
+    startTime: number;
+    currentTranslateX: number;
+    directionLocked: null | 'horizontal' | 'vertical';
+    scale: number;
+  }
+
+  const SWIPE_THRESHOLD = 60;
+  const VELOCITY_THRESHOLD = 0.3;
+  const DIRECTION_LOCK_DISTANCE = 5;
+  const DIRECTION_LOCK_ANGLE = 30;
+  const RUBBER_BAND_FACTOR = 0.3;
+  const CARD_WIDTH = 326;
+  const CARD_GAP = 16;
+  const OFFSCREEN_OFFSET = CARD_WIDTH + CARD_GAP;
+
+  const carousels: Record<string, CarouselState> = {
+    feature: { current: 0, total: 3, dragging: false, startX: 0, startY: 0, startTime: 0, currentTranslateX: 0, directionLocked: null, scale: 1 },
+    voice:   { current: 0, total: 4, dragging: false, startX: 0, startY: 0, startTime: 0, currentTranslateX: 0, directionLocked: null, scale: 1 },
+    honesty: { current: 0, total: 3, dragging: false, startX: 0, startY: 0, startTime: 0, currentTranslateX: 0, directionLocked: null, scale: 1 },
   };
+
+  /* ============================================
+     Scale factor helper
+     ============================================ */
+  function getScale(name: string): number {
+    const section = document.querySelector(`[data-carousel-section="${name}"]`);
+    if (!section) return 1;
+    const screen = section.closest('.screen') as HTMLElement;
+    if (!screen) return 1;
+    const match = screen.style.transform.match(/scale\(([^)]+)\)/);
+    return match ? parseFloat(match[1]) : 1;
+  }
+
+  /* ============================================
+     Card element helpers
+     ============================================ */
+  function getCards(name: string): HTMLElement[] {
+    const section = document.querySelector(`[data-carousel-section="${name}"]`);
+    if (!section) return [];
+    return Array.from(section.querySelectorAll<HTMLElement>('[class*="main_0"]'));
+  }
+
+  function getCardByIndex(name: string, index: number): HTMLElement | null {
+    const section = document.querySelector(`[data-carousel-section="${name}"]`);
+    if (!section) return null;
+    return section.querySelector<HTMLElement>(`.main_0${index + 1}`);
+  }
 
   /* ============================================
      Dot indicator helpers
      ============================================ */
-
-  /** Update active dot for a given carousel */
   function updateDots(name: string, index: number) {
     const dotsContainer = document.querySelector(
       `.carousel-dots[data-carousel="${name}"]`
     );
     if (!dotsContainer) return;
-
     dotsContainer.querySelectorAll('.dot').forEach((dot, i) => {
       dot.classList.toggle('active', i === index);
     });
   }
 
-  /** Create dot elements for all carousels */
   function createDots() {
     Object.keys(carousels).forEach((name) => {
       const dotsContainer = document.querySelector(
@@ -128,37 +203,41 @@ import FAQ from '../components/sections/FAQ.astro';
   }
 
   /* ============================================
-     Slide navigation
+     Slide navigation (class + translateX based)
      ============================================ */
-
-  /** Show a specific slide by index, wrapping around at boundaries */
   function showSlide(name: string, index: number) {
     const carousel = carousels[name];
     if (!carousel) return;
 
-    // Wrap around
-    if (index < 0) index = carousel.total - 1;
-    if (index >= carousel.total) index = 0;
+    // Clamp at boundaries (no wrap for drag UX)
+    if (index < 0) index = 0;
+    if (index >= carousel.total) index = carousel.total - 1;
     carousel.current = index;
 
-    // Find the section container
-    const sectionEl = document.querySelector(
-      `[data-carousel-section="${name}"]`
-    );
-    if (!sectionEl) return;
+    const cards = getCards(name);
+    cards.forEach((card, i) => {
+      // Reset inline styles from drag
+      card.style.transform = '';
+      card.style.opacity = '';
 
-    // Hide all cards
-    sectionEl.querySelectorAll<HTMLElement>('[class*="main_0"]').forEach((card) => {
-      card.style.display = 'none';
+      // Remove all state classes
+      card.classList.remove('carousel-active', 'carousel-adjacent', 'carousel-dragging');
+
+      if (i === index) {
+        card.classList.add('carousel-active');
+        card.style.transform = 'translateX(0)';
+      } else if (i === index - 1) {
+        card.classList.add('carousel-adjacent');
+        card.style.transform = `translateX(-${OFFSCREEN_OFFSET}px)`;
+      } else if (i === index + 1) {
+        card.classList.add('carousel-adjacent');
+        card.style.transform = `translateX(${OFFSCREEN_OFFSET}px)`;
+      } else {
+        card.style.transform = i < index
+          ? `translateX(-${OFFSCREEN_OFFSET}px)`
+          : `translateX(${OFFSCREEN_OFFSET}px)`;
+      }
     });
-
-    // Show target card
-    const targetCard = sectionEl.querySelector<HTMLElement>(
-      `.main_0${index + 1}`
-    );
-    if (targetCard) {
-      targetCard.style.display = '';
-    }
 
     updateDots(name, index);
   }
@@ -183,42 +262,133 @@ import FAQ from '../components/sections/FAQ.astro';
   });
 
   /* ============================================
-     Touch swipe support
+     Touch drag support (real-time tracking)
      ============================================ */
-  function initSwipe() {
+  function initDrag() {
     Object.keys(carousels).forEach((name) => {
       const container = document.querySelector(
         `[data-carousel-section="${name}"]`
-      );
+      ) as HTMLElement;
       if (!container) return;
 
-      let startX = 0;
-      let startY = 0;
-      let isDragging = false;
-
+      /* ---------- touchstart ---------- */
       container.addEventListener('touchstart', ((e: TouchEvent) => {
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-        isDragging = true;
+        const state = carousels[name];
+        state.dragging = true;
+        state.startX = e.touches[0].clientX;
+        state.startY = e.touches[0].clientY;
+        state.startTime = Date.now();
+        state.currentTranslateX = 0;
+        state.directionLocked = null;
+        state.scale = getScale(name);
+
+        // Disable transition on current + adjacent cards for instant tracking
+        const activeCard = getCardByIndex(name, state.current);
+        if (activeCard) activeCard.classList.add('carousel-dragging');
+        const prevCard = getCardByIndex(name, state.current - 1);
+        if (prevCard) prevCard.classList.add('carousel-dragging');
+        const nextCard = getCardByIndex(name, state.current + 1);
+        if (nextCard) nextCard.classList.add('carousel-dragging');
       }) as EventListener, { passive: true });
 
-      container.addEventListener('touchend', ((e: TouchEvent) => {
-        if (!isDragging) return;
-        isDragging = false;
+      /* ---------- touchmove ---------- */
+      container.addEventListener('touchmove', ((e: TouchEvent) => {
+        const state = carousels[name];
+        if (!state.dragging) return;
 
-        const endX = e.changedTouches[0].clientX;
-        const endY = e.changedTouches[0].clientY;
-        const diffX = endX - startX;
-        const diffY = endY - startY;
+        const currentX = e.touches[0].clientX;
+        const currentY = e.touches[0].clientY;
+        const rawDiffX = currentX - state.startX;
+        const rawDiffY = currentY - state.startY;
 
-        // Only handle horizontal swipes that exceed the threshold
-        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
-          if (diffX < 0) {
-            showSlide(name, carousels[name].current + 1);
+        // Direction lock: decide once
+        if (state.directionLocked === null
+            && (Math.abs(rawDiffX) > DIRECTION_LOCK_DISTANCE || Math.abs(rawDiffY) > DIRECTION_LOCK_DISTANCE)) {
+          const angle = Math.abs(Math.atan2(rawDiffY, rawDiffX) * 180 / Math.PI);
+          if (angle < DIRECTION_LOCK_ANGLE || angle > (180 - DIRECTION_LOCK_ANGLE)) {
+            state.directionLocked = 'horizontal';
           } else {
-            showSlide(name, carousels[name].current - 1);
+            state.directionLocked = 'vertical';
+            state.dragging = false;
+            getCards(name).forEach(c => c.classList.remove('carousel-dragging'));
+            return;
           }
         }
+
+        if (state.directionLocked !== 'horizontal') return;
+
+        // Prevent vertical scroll while dragging horizontally
+        e.preventDefault();
+
+        // Convert screen px to design-space px
+        const designDiffX = rawDiffX / state.scale;
+
+        // Rubber band at boundaries
+        let dampedDiffX = designDiffX;
+        const isAtStart = state.current === 0 && designDiffX > 0;
+        const isAtEnd = state.current === state.total - 1 && designDiffX < 0;
+        if (isAtStart || isAtEnd) {
+          dampedDiffX = designDiffX * RUBBER_BAND_FACTOR;
+        }
+
+        state.currentTranslateX = dampedDiffX;
+
+        // Move active card with finger
+        const activeCard = getCardByIndex(name, state.current);
+        if (activeCard) {
+          activeCard.style.transform = `translateX(${dampedDiffX}px)`;
+        }
+
+        // Move adjacent card into view (peek effect)
+        if (designDiffX < 0) {
+          // Swiping left → show next
+          const nextCard = getCardByIndex(name, state.current + 1);
+          if (nextCard) {
+            nextCard.classList.add('carousel-adjacent');
+            const progress = Math.min(1, Math.abs(designDiffX) / SWIPE_THRESHOLD);
+            nextCard.style.opacity = String(Math.max(0.3, progress));
+            nextCard.style.transform = `translateX(${OFFSCREEN_OFFSET + dampedDiffX}px)`;
+          }
+        } else if (designDiffX > 0) {
+          // Swiping right → show prev
+          const prevCard = getCardByIndex(name, state.current - 1);
+          if (prevCard) {
+            prevCard.classList.add('carousel-adjacent');
+            const progress = Math.min(1, Math.abs(designDiffX) / SWIPE_THRESHOLD);
+            prevCard.style.opacity = String(Math.max(0.3, progress));
+            prevCard.style.transform = `translateX(${-OFFSCREEN_OFFSET + dampedDiffX}px)`;
+          }
+        }
+      }) as EventListener, { passive: false });
+
+      /* ---------- touchend ---------- */
+      container.addEventListener('touchend', ((e: TouchEvent) => {
+        const state = carousels[name];
+        if (!state.dragging && state.directionLocked !== 'horizontal') return;
+        state.dragging = false;
+
+        // Re-enable transitions for snap animation
+        getCards(name).forEach(c => c.classList.remove('carousel-dragging'));
+
+        const endX = e.changedTouches[0].clientX;
+        const rawDiffX = endX - state.startX;
+        const designDiffX = rawDiffX / state.scale;
+        const elapsed = Date.now() - state.startTime;
+        const velocity = elapsed > 0 ? Math.abs(designDiffX) / elapsed : 0;
+
+        let newIndex = state.current;
+
+        if (Math.abs(designDiffX) > SWIPE_THRESHOLD || velocity > VELOCITY_THRESHOLD) {
+          if (designDiffX < 0 && state.current < state.total - 1) {
+            newIndex = state.current + 1;
+          } else if (designDiffX > 0 && state.current > 0) {
+            newIndex = state.current - 1;
+          }
+        }
+
+        // Snap to new index (or bounce back) with CSS transition
+        showSlide(name, newIndex);
+        state.directionLocked = null;
       }) as EventListener, { passive: true });
     });
   }
@@ -234,6 +404,6 @@ import FAQ from '../components/sections/FAQ.astro';
       showSlide(name, 0);
     });
 
-    initSwipe();
+    initDrag();
   });
 </script>
