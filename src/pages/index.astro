@@ -209,10 +209,13 @@ import FAQ from '../components/sections/FAQ.astro';
     const carousel = carousels[name];
     if (!carousel) return;
 
-    // Clamp at boundaries (no wrap for drag UX)
-    if (index < 0) index = 0;
-    if (index >= carousel.total) index = carousel.total - 1;
+    // Wrap around at boundaries (infinite loop)
+    index = ((index % carousel.total) + carousel.total) % carousel.total;
     carousel.current = index;
+
+    const total = carousel.total;
+    const prevIndex = (index - 1 + total) % total;
+    const nextIndex = (index + 1) % total;
 
     const cards = getCards(name);
     cards.forEach((card, i) => {
@@ -226,16 +229,14 @@ import FAQ from '../components/sections/FAQ.astro';
       if (i === index) {
         card.classList.add('carousel-active');
         card.style.transform = 'translateX(0)';
-      } else if (i === index - 1) {
+      } else if (i === prevIndex) {
         card.classList.add('carousel-adjacent');
         card.style.transform = `translateX(-${OFFSCREEN_OFFSET}px)`;
-      } else if (i === index + 1) {
+      } else if (i === nextIndex) {
         card.classList.add('carousel-adjacent');
         card.style.transform = `translateX(${OFFSCREEN_OFFSET}px)`;
       } else {
-        card.style.transform = i < index
-          ? `translateX(-${OFFSCREEN_OFFSET}px)`
-          : `translateX(${OFFSCREEN_OFFSET}px)`;
+        card.style.transform = `translateX(${OFFSCREEN_OFFSET}px)`;
       }
     });
 
@@ -283,11 +284,12 @@ import FAQ from '../components/sections/FAQ.astro';
         state.scale = getScale(name);
 
         // Disable transition on current + adjacent cards for instant tracking
+        const total = state.total;
         const activeCard = getCardByIndex(name, state.current);
         if (activeCard) activeCard.classList.add('carousel-dragging');
-        const prevCard = getCardByIndex(name, state.current - 1);
+        const prevCard = getCardByIndex(name, (state.current - 1 + total) % total);
         if (prevCard) prevCard.classList.add('carousel-dragging');
-        const nextCard = getCardByIndex(name, state.current + 1);
+        const nextCard = getCardByIndex(name, (state.current + 1) % total);
         if (nextCard) nextCard.classList.add('carousel-dragging');
       }) as EventListener, { passive: true });
 
@@ -323,40 +325,33 @@ import FAQ from '../components/sections/FAQ.astro';
         // Convert screen px to design-space px
         const designDiffX = rawDiffX / state.scale;
 
-        // Rubber band at boundaries
-        let dampedDiffX = designDiffX;
-        const isAtStart = state.current === 0 && designDiffX > 0;
-        const isAtEnd = state.current === state.total - 1 && designDiffX < 0;
-        if (isAtStart || isAtEnd) {
-          dampedDiffX = designDiffX * RUBBER_BAND_FACTOR;
-        }
-
-        state.currentTranslateX = dampedDiffX;
+        state.currentTranslateX = designDiffX;
 
         // Move active card with finger
         const activeCard = getCardByIndex(name, state.current);
         if (activeCard) {
-          activeCard.style.transform = `translateX(${dampedDiffX}px)`;
+          activeCard.style.transform = `translateX(${designDiffX}px)`;
         }
 
-        // Move adjacent card into view (peek effect)
+        // Move adjacent card into view (peek effect) — wraps around
+        const total = state.total;
         if (designDiffX < 0) {
-          // Swiping left → show next
-          const nextCard = getCardByIndex(name, state.current + 1);
+          // Swiping left → show next (wraps)
+          const nextCard = getCardByIndex(name, (state.current + 1) % total);
           if (nextCard) {
             nextCard.classList.add('carousel-adjacent');
             const progress = Math.min(1, Math.abs(designDiffX) / SWIPE_THRESHOLD);
             nextCard.style.opacity = String(Math.max(0.3, progress));
-            nextCard.style.transform = `translateX(${OFFSCREEN_OFFSET + dampedDiffX}px)`;
+            nextCard.style.transform = `translateX(${OFFSCREEN_OFFSET + designDiffX}px)`;
           }
         } else if (designDiffX > 0) {
-          // Swiping right → show prev
-          const prevCard = getCardByIndex(name, state.current - 1);
+          // Swiping right → show prev (wraps)
+          const prevCard = getCardByIndex(name, (state.current - 1 + total) % total);
           if (prevCard) {
             prevCard.classList.add('carousel-adjacent');
             const progress = Math.min(1, Math.abs(designDiffX) / SWIPE_THRESHOLD);
             prevCard.style.opacity = String(Math.max(0.3, progress));
-            prevCard.style.transform = `translateX(${-OFFSCREEN_OFFSET + dampedDiffX}px)`;
+            prevCard.style.transform = `translateX(${-OFFSCREEN_OFFSET + designDiffX}px)`;
           }
         }
       }) as EventListener, { passive: false });
@@ -379,10 +374,10 @@ import FAQ from '../components/sections/FAQ.astro';
         let newIndex = state.current;
 
         if (Math.abs(designDiffX) > SWIPE_THRESHOLD || velocity > VELOCITY_THRESHOLD) {
-          if (designDiffX < 0 && state.current < state.total - 1) {
-            newIndex = state.current + 1;
-          } else if (designDiffX > 0 && state.current > 0) {
-            newIndex = state.current - 1;
+          if (designDiffX < 0) {
+            newIndex = state.current + 1; // wraps via showSlide
+          } else if (designDiffX > 0) {
+            newIndex = state.current - 1; // wraps via showSlide
           }
         }
 
