@@ -1,0 +1,221 @@
+---
+---
+
+<div class="section" style="background:#ebe5df">
+  <div class="screen-wrapper">
+    <div class="problem screen">
+      <div class="problem__card">
+        <div class="problem__card-border"></div>
+      </div>
+      <div class="problem__body">
+        <img class="problem__icon" src="/img/icon@2x.png" alt="" />
+        <div class="problem__text">
+          「ヒューマングレード」<br />「グレインフリー」<br />「オーガニック」…何が違うの？<br /><br /><br />ランキングサイトは、<br />どれも言ってることが違う<br /><br /><br />結局、うちの子に合うかは<br />試してみないとわからない
+        </div>
+      </div>
+      <div class="problem__header">
+        <div class="problem__header-illustration">
+          <img class="problem__vector" src="/img/vector-8.svg" alt="" />
+          <img class="problem__vector" src="/img/vector-9.svg" alt="" />
+          <img class="problem__vector" src="/img/vector-10.svg" alt="" />
+          <img class="problem__vector" src="/img/vector-11.svg" alt="" />
+          <img class="problem__vector" src="/img/vector-12.svg" alt="" />
+          <img class="problem__vector" src="/img/vector-13.svg" alt="" />
+        </div>
+        <div class="problem__title">調べれば調べるほど、<br />わからなくなる。</div>
+      </div>
+      <div class="problem__lines">
+        <img class="problem__line" src="/img/line-2-2.svg" alt="" />
+        <img class="problem__line" src="/img/line-2-2.svg" alt="" />
+      </div>
+      <img class="problem__dog" src="/img/adobestock-306678087-2.png" alt="パグ" />
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Section & wrapper */
+  .section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-bottom: 55px;
+    overflow: hidden;
+    scroll-snap-align: start;
+  }
+
+  .screen-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Main screen */
+  .problem {
+    position: relative;
+    width: 440px !important;
+    height: 959px !important;
+    background-color: #ebe5df;
+    overflow: hidden !important;
+    will-change: transform;
+  }
+
+  /* Card */
+  .problem__card {
+    position: absolute;
+    top: 326px;
+    left: 24px;
+    display: flex;
+    width: 393px;
+    height: 451px;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px #0000000d;
+  }
+
+  .problem__card-border {
+    width: 382px;
+    height: 437px;
+    margin-left: 5px;
+    margin-top: 7px;
+    border: 1px dashed #b0d4e4;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px #0000000d;
+  }
+
+  /* Body content */
+  .problem__body {
+    position: absolute;
+    top: 454px;
+    left: calc(50% - 138px);
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .problem__icon {
+    width: 21px;
+    height: 248px;
+  }
+
+  .problem__text {
+    width: 250px;
+    color: var(--black);
+    font-size: var(--font-size-l);
+    font-weight: 700;
+    letter-spacing: 0.80px;
+    line-height: 25px;
+  }
+
+  /* Header & illustration */
+  .problem__header {
+    position: absolute;
+    top: 86px;
+    left: 161px;
+    width: 247px;
+    height: 188px;
+  }
+
+  .problem__header-illustration {
+    position: absolute;
+    top: 8px;
+    left: 6px;
+    width: 233px;
+    height: 172px;
+    overflow: hidden;
+    transform: rotate(4.04deg);
+  }
+
+  .problem__header-illustration .problem__vector {
+    position: absolute;
+    transform: rotate(-4.04deg);
+  }
+
+  .problem__header-illustration .problem__vector:nth-child(1) {
+    top: 5.70%;
+    left: 2.80%;
+    width: 96.08%;
+    height: 92.83%;
+  }
+
+  .problem__header-illustration .problem__vector:nth-child(2) {
+    top: 73.85%;
+    left: 17.01%;
+    width: 55.35%;
+    height: 26.50%;
+  }
+
+  .problem__header-illustration .problem__vector:nth-child(3) {
+    top: 33.45%;
+    left: 0;
+    width: 13.14%;
+    height: 41.63%;
+  }
+
+  .problem__header-illustration .problem__vector:nth-child(4) {
+    top: 6.76%;
+    left: 15.33%;
+    width: 28.68%;
+    height: 18.03%;
+  }
+
+  .problem__header-illustration .problem__vector:nth-child(5) {
+    top: 0;
+    left: 56.35%;
+    width: 35.39%;
+    height: 41.80%;
+  }
+
+  .problem__header-illustration .problem__vector:nth-child(6) {
+    top: 45.91%;
+    left: 74.86%;
+    width: 22.65%;
+    height: 38.24%;
+  }
+
+  .problem__title {
+    position: absolute;
+    top: 74px;
+    left: calc(50% - 70px);
+    color: var(--black);
+    font-size: 16.1px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+    line-height: normal;
+    text-align: center;
+    transform: rotate(4.04deg);
+  }
+
+  /* Divider lines */
+  .problem__lines {
+    position: absolute;
+    top: 554px;
+    left: 43px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 354px;
+    gap: 99px;
+  }
+
+  .problem__line {
+    align-self: stretch;
+    width: 100%;
+    height: 1px;
+    object-fit: cover;
+  }
+
+  /* Dog image */
+  .problem__dog {
+    position: absolute;
+    top: 243px;
+    left: 79px;
+    width: 146px;
+    height: 177px;
+    object-fit: cover;
+  }
+</style>

@@ -1,0 +1,239 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FV from '../components/sections/FV.astro';
+import Problem from '../components/sections/Problem.astro';
+import Solution from '../components/sections/Solution.astro';
+import Features from '../components/sections/Features.astro';
+import Ingenuity from '../components/sections/Ingenuity.astro';
+import Reviews from '../components/sections/Reviews.astro';
+import About from '../components/sections/About.astro';
+import Caution from '../components/sections/Caution.astro';
+import CTA from '../components/sections/CTA.astro';
+import FAQ from '../components/sections/FAQ.astro';
+---
+
+<Layout title="メディコートアドバンス グレインフリー">
+  <FV />
+  <Problem />
+  <Solution />
+  <Features />
+  <Ingenuity />
+  <Reviews />
+  <About />
+  <Caution />
+  <CTA />
+  <FAQ />
+</Layout>
+
+<style is:global>
+  /* ==========================================
+     Carousel dot indicators
+     ========================================== */
+  .carousel-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .carousel-dots .dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: #d9d9d9;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+  }
+
+  /* Active dot colors per section */
+  .ingenuity .carousel-dots .dot.active,
+  .reviews .carousel-dots .dot.active {
+    background-color: #FF5100;
+  }
+
+  .caution .carousel-dots .dot.active {
+    background-color: #81C776;
+  }
+
+  /* ==========================================
+     Slider navigation buttons
+     ========================================== */
+  .slider-btn {
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    line-height: 0;
+    transition: transform 0.15s ease;
+  }
+
+  .slider-btn:active {
+    transform: scale(0.85);
+  }
+</style>
+
+<script>
+  /* ============================================
+     Carousel state
+     ============================================ */
+  const carousels: Record<string, { current: number; total: number }> = {
+    feature: { current: 0, total: 3 },
+    voice:   { current: 0, total: 4 },
+    honesty: { current: 0, total: 3 },
+  };
+
+  /* ============================================
+     Dot indicator helpers
+     ============================================ */
+
+  /** Update active dot for a given carousel */
+  function updateDots(name: string, index: number) {
+    const dotsContainer = document.querySelector(
+      `.carousel-dots[data-carousel="${name}"]`
+    );
+    if (!dotsContainer) return;
+
+    dotsContainer.querySelectorAll('.dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+  }
+
+  /** Create dot elements for all carousels */
+  function createDots() {
+    Object.keys(carousels).forEach((name) => {
+      const dotsContainer = document.querySelector(
+        `.carousel-dots[data-carousel="${name}"]`
+      );
+      if (!dotsContainer) return;
+
+      const total = carousels[name].total;
+      for (let i = 0; i < total; i++) {
+        const dot = document.createElement('span');
+        dot.className = 'dot' + (i === 0 ? ' active' : '');
+        dot.dataset.index = String(i);
+        dot.dataset.carousel = name;
+        dot.setAttribute('aria-label', `スライド ${i + 1}`);
+
+        dot.addEventListener('click', function (this: HTMLElement) {
+          const n = this.dataset.carousel!;
+          const idx = parseInt(this.dataset.index!, 10);
+          showSlide(n, idx);
+        });
+
+        dotsContainer.appendChild(dot);
+      }
+    });
+  }
+
+  /* ============================================
+     Slide navigation
+     ============================================ */
+
+  /** Show a specific slide by index, wrapping around at boundaries */
+  function showSlide(name: string, index: number) {
+    const carousel = carousels[name];
+    if (!carousel) return;
+
+    // Wrap around
+    if (index < 0) index = carousel.total - 1;
+    if (index >= carousel.total) index = 0;
+    carousel.current = index;
+
+    // Find the section container
+    const sectionEl = document.querySelector(
+      `[data-carousel-section="${name}"]`
+    );
+    if (!sectionEl) return;
+
+    // Hide all cards
+    sectionEl.querySelectorAll<HTMLElement>('[class*="main_0"]').forEach((card) => {
+      card.style.display = 'none';
+    });
+
+    // Show target card
+    const targetCard = sectionEl.querySelector<HTMLElement>(
+      `.main_0${index + 1}`
+    );
+    if (targetCard) {
+      targetCard.style.display = '';
+    }
+
+    updateDots(name, index);
+  }
+
+  /* ============================================
+     Button click handling (prev/next)
+     ============================================ */
+  document.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest(
+      '.slider-btn, .reviews__slider-prev, .reviews__slider-next'
+    );
+    if (!btn) return;
+
+    const name = (btn as HTMLElement).dataset.carousel;
+    if (!name || !carousels[name]) return;
+
+    const isPrev = btn.classList.contains('slider-btn--prev')
+      || btn.classList.contains('reviews__slider-prev');
+    const direction = isPrev ? -1 : 1;
+
+    showSlide(name, carousels[name].current + direction);
+  });
+
+  /* ============================================
+     Touch swipe support
+     ============================================ */
+  function initSwipe() {
+    Object.keys(carousels).forEach((name) => {
+      const container = document.querySelector(
+        `[data-carousel-section="${name}"]`
+      );
+      if (!container) return;
+
+      let startX = 0;
+      let startY = 0;
+      let isDragging = false;
+
+      container.addEventListener('touchstart', ((e: TouchEvent) => {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        isDragging = true;
+      }) as EventListener, { passive: true });
+
+      container.addEventListener('touchend', ((e: TouchEvent) => {
+        if (!isDragging) return;
+        isDragging = false;
+
+        const endX = e.changedTouches[0].clientX;
+        const endY = e.changedTouches[0].clientY;
+        const diffX = endX - startX;
+        const diffY = endY - startY;
+
+        // Only handle horizontal swipes that exceed the threshold
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+          if (diffX < 0) {
+            showSlide(name, carousels[name].current + 1);
+          } else {
+            showSlide(name, carousels[name].current - 1);
+          }
+        }
+      }) as EventListener, { passive: true });
+    });
+  }
+
+  /* ============================================
+     Initialization
+     ============================================ */
+  document.addEventListener('DOMContentLoaded', () => {
+    createDots();
+
+    // Show the first slide for each carousel
+    Object.keys(carousels).forEach((name) => {
+      showSlide(name, 0);
+    });
+
+    initSwipe();
+  });
+</script>

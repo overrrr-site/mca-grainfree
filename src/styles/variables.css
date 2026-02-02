@@ -1,0 +1,36 @@
+:root {
+  /* Brand colors */
+  --orange: #ff5000;
+  --green: #80c776;
+  --cerise: #d32981;
+  --lochmara: #0076bc;
+
+  /* Text colors */
+  --brown-title-text: #7a6651;
+  --eerie-black: #191919;
+  --stack: #8b8b8b;
+
+  /* Neutral colors */
+  --white: #ffffff;
+  --black: #000000;
+
+  /* Background colors */
+  --background-01: #fcf5e8;
+  --background-02: #fefbf4;
+  --background-03: #f5f8f1;
+
+  /* Typography */
+  --font-family: "Zen Maru Gothic", sans-serif;
+  --font-size-xxxs: 10px;
+  --font-size-xxs: 10.9px;
+  --font-size-xs: 12.3px;
+  --font-size-s: 14px;
+  --font-size-m: 15px;
+  --font-size-l: 16px;
+  --font-size-xl: 22px;
+
+  /* Layout — reference values used by JS scaling logic */
+  --design-width: 440px;
+  --design-height: 959px;
+  --footer-height: 110px;
+}

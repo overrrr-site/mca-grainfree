@@ -1,0 +1,246 @@
+---
+---
+
+<div class="section" style="background:#fcf5e8">
+  <div class="screen-wrapper">
+    <div class="ingenuity screen" data-carousel-section="feature">
+      <div class="ingenuity__header">
+        <div class="ingenuity__label">FEATURE</div>
+        <h1 class="ingenuity__title">愛犬のための工夫</h1>
+      </div>
+      <div class="ingenuity__bg-card ingenuity__bg-card--left"></div>
+      <div class="ingenuity__bg-card ingenuity__bg-card--right"></div>
+      <div class="ingenuity__slider">
+        <button class="slider-btn slider-btn--prev" data-carousel="feature" aria-label="前へ">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="18" fill="#FF5100"/><path d="M20.5 12L15 17.5L20.5 23" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="carousel-dots" data-carousel="feature"></div>
+        <button class="slider-btn slider-btn--next" data-carousel="feature" aria-label="次へ">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="18" fill="#FF5100"/><path d="M15.5 12L21 17.5L15.5 23" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="ingenuity__card main_01">
+        <div class="ingenuity__card-inner">
+          <img class="ingenuity__card-image" src="/img/image-1@2x.png" alt="小型犬でも食べやすい粒" />
+          <div class="ingenuity__card-content">
+            <div class="ingenuity__card-heading">小型犬でも食べやすい<br />粒の大きさ</div>
+            <div class="ingenuity__card-text">小さな口でも食べやすいよう、<br />粒の大きさにこだわりました。<br />シニア犬にも好評です。</div>
+          </div>
+        </div>
+      </div>
+      <div class="ingenuity__card main_02" style="display:none">
+        <div class="ingenuity__card-inner">
+          <img class="ingenuity__card-image ingenuity__card-image--pack" src="/img/pack-image.png" alt="小分けパック" />
+          <div class="ingenuity__card-content">
+            <div class="ingenuity__card-heading">500gの小分けパック</div>
+            <div class="ingenuity__card-text">500gずつの小分けパックで、<br />開けたてのおいしさを<br />最後までお届けします。</div>
+          </div>
+        </div>
+      </div>
+      <div class="ingenuity__card main_03" style="display:none">
+        <div class="ingenuity__card-inner">
+          <img class="ingenuity__card-image ingenuity__card-image--gut" src="/img/icon-gut.svg" alt="おなかの健康" />
+          <div class="ingenuity__card-content">
+            <div class="ingenuity__card-heading">おなかの健康維持に<br />フラクトオリゴ糖配合</div>
+            <div class="ingenuity__card-text">お腹の善玉菌を増やすフラクトオリゴ糖を配合。健やかな腸内環境をサポートします。</div>
+          </div>
+        </div>
+      </div>
+      <img class="ingenuity__bottom-image" src="/img/image@2x.png" alt="" />
+    </div>
+  </div>
+</div>
+
+<style>
+  /* ----------------------------------------
+     Section & Screen Base
+     ---------------------------------------- */
+  .section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding-bottom: 55px;
+    scroll-snap-align: start;
+  }
+
+  .screen-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ----------------------------------------
+     Ingenuity Container
+     ---------------------------------------- */
+  .ingenuity {
+    position: relative;
+    width: 440px !important;
+    height: 959px !important;
+    overflow: hidden !important;
+    background-color: var(--background-01);
+    will-change: transform;
+  }
+
+  /* ----------------------------------------
+     Header
+     ---------------------------------------- */
+  .ingenuity__header {
+    position: absolute;
+    top: 101px;
+    left: 108px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    width: 225px;
+  }
+
+  .ingenuity__label {
+    align-self: stretch;
+    color: var(--orange);
+    font-size: var(--font-size-s);
+    font-weight: 700;
+    letter-spacing: 0.70px;
+    text-align: center;
+  }
+
+  .ingenuity__title {
+    width: 317px;
+    margin-left: -46px;
+    margin-right: -46px;
+    color: var(--brown-title-text);
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 1.80px;
+    text-align: center;
+  }
+
+  /* ----------------------------------------
+     Background Cards (decorative)
+     ---------------------------------------- */
+  .ingenuity__bg-card {
+    position: absolute;
+    top: 268px;
+    width: 326px;
+    height: 326px;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px #0000000d;
+  }
+
+  .ingenuity__bg-card--left {
+    left: calc(50% - 509px);
+  }
+
+  .ingenuity__bg-card--right {
+    left: calc(50% + 188px);
+  }
+
+  /* ----------------------------------------
+     Slider Controls
+     ---------------------------------------- */
+  .ingenuity__slider {
+    position: absolute;
+    top: 621px;
+    left: 57px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 326px;
+  }
+
+  /* ----------------------------------------
+     Cards
+     ---------------------------------------- */
+  .ingenuity__card {
+    position: absolute;
+    top: 268px;
+    left: 57px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+    width: 326px;
+    height: 326px;
+    padding: 0 28px;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px #0000000d;
+  }
+
+  .ingenuity__card-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 23px;
+    width: 270px;
+  }
+
+  /* ----------------------------------------
+     Card Images
+     ---------------------------------------- */
+  .ingenuity__card-image {
+    width: 115px;
+    height: 86px;
+    object-fit: cover;
+  }
+
+  .ingenuity__card-image--pack {
+    width: 204px;
+    height: auto;
+  }
+
+  .ingenuity__card-image--gut {
+    width: 89px;
+    height: 97px;
+  }
+
+  /* ----------------------------------------
+     Card Content & Typography
+     ---------------------------------------- */
+  .ingenuity__card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 13px;
+    width: 100%;
+  }
+
+  .ingenuity__card-heading {
+    color: var(--black);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    letter-spacing: 1.10px;
+    text-align: center;
+  }
+
+  .ingenuity__card-text {
+    align-self: stretch;
+    color: var(--black);
+    font-size: var(--font-size-l);
+    font-weight: 500;
+    letter-spacing: 0.80px;
+    line-height: 24px;
+    text-align: center;
+  }
+
+  /* ----------------------------------------
+     Bottom Decorative Image
+     ---------------------------------------- */
+  .ingenuity__bottom-image {
+    position: absolute;
+    top: 709px;
+    left: calc(50% - 66px);
+    width: 156px;
+    height: 117px;
+    object-fit: cover;
+  }
+</style>
