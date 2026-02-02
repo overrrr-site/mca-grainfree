@@ -20,11 +20,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.section {
-  content-visibility: auto;
-  contain-intrinsic-size: 440px 959px;
-}
-
 img {
   max-width: 100%;
   display: block;
