@@ -164,6 +164,7 @@
   }
 
   .cta-section__product-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -181,17 +182,19 @@
    * Product badges (flavor labels)
    * ======================================== */
   .cta-section__product-badge {
-    align-self: flex-start;
-    margin-top: -40px;
+    position: absolute;
   }
 
   .cta-section__product-badge--chicken {
+    top: 169px;
+    left: -10px;
     width: 91px;
     height: 91px;
-    margin-left: -10px;
   }
 
   .cta-section__product-badge--fish {
+    top: 194px;
+    right: -10px;
     width: 84px;
     height: 41px;
   }
