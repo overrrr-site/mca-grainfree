@@ -17,10 +17,7 @@
       <div class="cta-section__products">
         <a href="https://www.petlineonline.com/shop/g/gU0604/" data-lp="grainfree" data-cta="cta-chicken" class="cta-section__product-card cta-section__product-card--chicken">
           <img class="cta-section__product-image" src="/img/product-chicken.webp" alt="チキン味" />
-          <div class="cta-section__product-badge cta-section__product-badge--chicken">
-            <img src="/img/cta-chicken-badge-bg.svg" alt="" class="cta-section__product-badge-bg" />
-            <span class="cta-section__product-badge-text cta-section__product-badge-text--chicken">チキン<small>味</small></span>
-          </div>
+          <img class="cta-section__product-badge cta-section__product-badge--chicken" src="/img/badge-chicken.svg" alt="チキン味" />
           <div class="cta-section__product-button cta-section__product-button--chicken">
             <span class="cta-section__product-button-text">今すぐ試す</span>
             <img src="/img/cta-button-arrow.svg" alt="" class="cta-section__product-button-arrow" />
@@ -28,10 +25,7 @@
         </a>
         <a href="https://www.petlineonline.com/shop/g/gU0606/" data-lp="grainfree" data-cta="cta-fish" class="cta-section__product-card cta-section__product-card--fish">
           <img class="cta-section__product-image" src="/img/product-fish.webp" alt="フィッシュ味" />
-          <div class="cta-section__product-badge cta-section__product-badge--fish">
-            <img src="/img/cta-fish-badge-bg.svg" alt="" class="cta-section__product-badge-bg" />
-            <span class="cta-section__product-badge-text cta-section__product-badge-text--fish">フィッシュ<small>味</small></span>
-          </div>
+          <img class="cta-section__product-badge cta-section__product-badge--fish" src="/img/badge-fish.svg" alt="フィッシュ味" />
           <div class="cta-section__product-button cta-section__product-button--fish">
             <span class="cta-section__product-button-text">今すぐ試す</span>
             <img src="/img/cta-button-arrow.svg" alt="" class="cta-section__product-button-arrow" />
@@ -187,38 +181,19 @@
    * Product badges (flavor labels)
    * ======================================== */
   .cta-section__product-badge {
-    position: relative;
     align-self: flex-start;
-    width: 91px;
-    height: 52px;
     margin-top: -40px;
   }
 
-  .cta-section__product-badge-bg {
-    width: 100%;
-    height: 100%;
+  .cta-section__product-badge--chicken {
+    width: 91px;
+    height: 91px;
+    margin-left: -10px;
   }
 
-  .cta-section__product-badge-text {
-    position: absolute;
-    top: 45%;
-    left: 38%;
-    transform: translate(-50%, -50%);
-    font-size: var(--font-size-xxs);
-    font-weight: 700;
-    white-space: nowrap;
-  }
-
-  .cta-section__product-badge-text--chicken {
-    color: var(--cerise);
-  }
-
-  .cta-section__product-badge-text--fish {
-    color: var(--lochmara);
-  }
-
-  .cta-section__product-badge-text small {
-    font-size: 8.2px;
+  .cta-section__product-badge--fish {
+    width: 84px;
+    height: 41px;
   }
 
   /* ========================================
