@@ -1,0 +1,294 @@
+---
+---
+
+<div class="section" style="background:#fcf5e8">
+  <div class="screen-wrapper">
+    <div class="about screen">
+      <div class="about__header">
+        <div class="about__label">ABOUT</div>
+        <h1 class="about__title">ペットラインについて</h1>
+      </div>
+      <div class="about__badges">
+        <div class="about__badges-bars">
+          <div class="about__bar about__bar--sm"></div>
+          <div class="about__bar about__bar--lg"></div>
+          <div class="about__bar about__bar--md"></div>
+        </div>
+        <div class="about__badges-text">1967年設立。<br />日本のペットフードを<br />支えてきました。</div>
+      </div>
+      <div class="about__description">日本農産工業を母体に1967年創設。<br />日本初のドライキャットフードを開発し、<br />半世紀以上にわたりペットの健康を支え続けています。</div>
+      <div class="about__note">※多治見工場、多治見本店</div>
+      <div class="about__features">
+        <div class="about__feature">
+          <div class="about__feature-border about__feature-border--sm"><div class="about__feature-icon" style="background-image: url('/img/about-icon-factory.svg'); width: 30px; height: 26px;"></div></div>
+          <div class="about__feature-text">国内自社工場で一貫生産</div>
+        </div>
+        <div class="about__feature about__feature--mid">
+          <div class="about__feature-border about__feature-border--sm"><div class="about__feature-icon" style="background-image: url('/img/about-icon-iso.svg'); width: 31px; height: 27px;"></div></div>
+          <div class="about__feature-text"><span>ISO22000認証取得</span><span class="about__feature-note">※</span></div>
+        </div>
+        <div class="about__feature about__feature--last">
+          <div class="about__feature-text">国内研究開発拠点での<br />ペットフード研究・開発</div>
+          <div class="about__feature-border about__feature-border--lg"><div class="about__feature-icon" style="background-image: url('/img/about-icon-research.svg'); width: 32px; height: 26px;"></div></div>
+        </div>
+      </div>
+      <img class="about__logo" src="/img/about-logo.webp" alt="ペットライン" />
+    </div>
+  </div>
+</div>
+
+<style>
+  /* ========================================
+   * Base section & wrapper
+   * ======================================== */
+  .section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-bottom: 55px;
+    overflow: hidden;
+    box-sizing: border-box;
+    scroll-snap-align: start;
+  }
+
+  .screen-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ========================================
+   * Section root
+   * ======================================== */
+  .about {
+    position: relative;
+    width: 440px !important;
+    height: 959px !important;
+    overflow: hidden !important;
+    background-color: var(--background-01);
+    will-change: transform;
+  }
+
+  /* ========================================
+   * Header (label + title)
+   * ======================================== */
+  .about__header {
+    position: absolute;
+    top: 101px;
+    left: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    width: 344px;
+  }
+
+  .about__label {
+    align-self: stretch;
+    color: var(--orange);
+    font-size: var(--font-size-s);
+    font-weight: 700;
+    letter-spacing: 0.70px;
+    text-align: center;
+  }
+
+  .about__title {
+    width: 404px;
+    margin-left: -30px;
+    margin-right: -30px;
+    color: var(--brown-title-text);
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 1.80px;
+    text-align: center;
+  }
+
+  /* ========================================
+   * Badges area
+   * ======================================== */
+  .about__badges {
+    position: absolute;
+    top: 294px;
+    left: 71px;
+    width: 302px;
+    height: 159px;
+  }
+
+  .about__badges-bars {
+    position: absolute;
+    top: 3.14%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    height: 94.22%;
+  }
+
+  .about__bar {
+    background-color: var(--white);
+  }
+
+  .about__bar--sm {
+    width: 182px;
+    height: 45px;
+  }
+
+  .about__bar--lg {
+    align-self: stretch;
+    width: 100%;
+    height: 44.41px;
+  }
+
+  .about__bar--md {
+    width: 235.45px;
+    height: 44.41px;
+  }
+
+  .about__badges-text {
+    position: absolute;
+    top: 0;
+    left: 3.32%;
+    width: 93.19%;
+    height: 100%;
+    color: var(--black);
+    font-size: 26.8px;
+    font-weight: 700;
+    letter-spacing: 1.34px;
+    line-height: 52.7px;
+    text-align: center;
+  }
+
+  /* ========================================
+   * Description & note
+   * ======================================== */
+  .about__description {
+    position: absolute;
+    top: 469px;
+    left: calc(50% - 195px);
+    width: 396px;
+    color: var(--black);
+    font-size: var(--font-size-s);
+    font-weight: 500;
+    letter-spacing: 0.70px;
+    line-height: 25px;
+    text-align: center;
+  }
+
+  .about__note {
+    position: absolute;
+    top: 804px;
+    left: calc(50% + 39px);
+    color: var(--black);
+    font-size: var(--font-size-xxxs);
+    font-weight: 500;
+    letter-spacing: 0.50px;
+    line-height: 25px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /* ========================================
+   * Features list
+   * ======================================== */
+  .about__features {
+    position: absolute;
+    top: 574px;
+    left: 55px;
+    display: flex;
+    flex-direction: column;
+    width: 330px;
+    height: 230px;
+  }
+
+  .about__feature {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 330px;
+    height: 60px;
+    padding: 17px 39px 17px 85px;
+  }
+
+  .about__feature--mid {
+    margin-top: 14px;
+    padding: 17px 80px 17px 85px;
+  }
+
+  .about__feature--last {
+    height: 84px;
+    margin-top: 12px;
+    padding: 17px 20px 17px 84px;
+  }
+
+  .about__feature-border--sm {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 333px;
+    height: 63px;
+    padding: 17px 31px;
+    border: 3px solid var(--orange);
+    border-radius: 5px;
+  }
+
+  .about__feature-border--lg {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 333px;
+    height: 87px;
+    padding: 29px 30px;
+    border: 3px solid var(--orange);
+    border-radius: 5px;
+  }
+
+  .about__feature-icon {
+    position: relative;
+    background-size: 100% 100%;
+  }
+
+  .about__feature-text {
+    width: fit-content;
+    color: var(--black);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.90px;
+    line-height: 25px;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .about__feature-note {
+    color: var(--black);
+    font-size: var(--font-size-xxxs);
+    font-weight: 700;
+  }
+
+  /* ========================================
+   * Logo
+   * ======================================== */
+  .about__logo {
+    position: absolute;
+    top: 215px;
+    left: calc(50% - 58px);
+    width: 116px;
+    height: 63px;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+  }
+</style>

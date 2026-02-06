@@ -1,0 +1,360 @@
+---
+---
+
+<div id="cta" class="section" style="background:#fcf5e8">
+  <div class="screen-wrapper">
+    <div class="cta-section screen">
+      <div class="cta-section__hero">
+        <div class="cta-section__hero-bg"></div>
+        <img class="cta-section__hero-image" src="/img/cta-hero-dog.webp" alt="" />
+      </div>
+      <div class="cta-section__info">
+        <div class="cta-section__info-inner">
+          <img class="cta-section__info-icon" src="/img/cta-info-icon.svg" alt="" />
+          <div class="cta-section__info-text">送料当社負担<br />お届けは1回のみ（自動継続なし）</div>
+        </div>
+      </div>
+      <div class="cta-section__products">
+        <a href="https://www.petlineonline.com/shop/g/gU0604/" data-lp="grainfree" data-cta="cta-chicken" class="cta-section__product-card cta-section__product-card--chicken">
+          <img class="cta-section__product-image" src="/img/product-chicken.webp" alt="チキン味" />
+          <img class="cta-section__product-badge cta-section__product-badge--chicken" src="/img/badge-chicken.svg" alt="チキン味" />
+          <div class="cta-section__product-button cta-section__product-button--chicken">
+            <span class="cta-section__product-button-text">今すぐ試す</span>
+            <img src="/img/cta-button-arrow.svg" alt="" class="cta-section__product-button-arrow" />
+          </div>
+        </a>
+        <a href="https://www.petlineonline.com/shop/g/gU0606/" data-lp="grainfree" data-cta="cta-fish" class="cta-section__product-card cta-section__product-card--fish">
+          <img class="cta-section__product-image" src="/img/product-fish.webp" alt="フィッシュ味" />
+          <img class="cta-section__product-badge cta-section__product-badge--fish" src="/img/badge-fish.svg" alt="フィッシュ味" />
+          <div class="cta-section__product-button cta-section__product-button--fish">
+            <span class="cta-section__product-button-text">今すぐ試す</span>
+            <img src="/img/cta-button-arrow.svg" alt="" class="cta-section__product-button-arrow" />
+          </div>
+        </a>
+      </div>
+      <div class="cta-section__price-area">
+        <div class="cta-section__price-header">
+          <div class="cta-section__price-deco cta-section__price-deco--left">
+            <img src="/img/cta-deco-line-l1.svg" alt="" />
+            <img src="/img/cta-deco-line-l2.svg" alt="" />
+          </div>
+          <div class="cta-section__price-label">お一人様1回限りの限定価格</div>
+          <div class="cta-section__price-deco cta-section__price-deco--right">
+            <img src="/img/cta-deco-line-r1.svg" alt="" />
+            <img src="/img/cta-deco-line-r2.svg" alt="" />
+          </div>
+        </div>
+        <div class="cta-section__price-value" style="background-image: url('/img/cta-price-bg.svg'); background-size: 100% 100%;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* ========================================
+   * Base section & wrapper
+   * ======================================== */
+  .section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-bottom: 55px;
+    overflow: hidden;
+    box-sizing: border-box;
+    scroll-snap-align: start;
+  }
+
+  .screen-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ========================================
+   * Section root
+   * ======================================== */
+  .cta-section {
+    position: relative;
+    width: 440px !important;
+    height: 959px !important;
+    overflow: hidden !important;
+    background-color: var(--background-01);
+    will-change: transform;
+  }
+
+  /* ========================================
+   * Hero area (image + background)
+   * ======================================== */
+  .cta-section__hero {
+    position: absolute;
+    top: -63px;
+    left: 21px;
+    width: 398px;
+    height: 864px;
+  }
+
+  .cta-section__hero-bg {
+    position: absolute;
+    top: 343px;
+    left: 0;
+    width: 398px;
+    height: 521px;
+    background-color: var(--white);
+  }
+
+  .cta-section__hero-image {
+    position: absolute;
+    top: 0;
+    left: calc(50% - 199px);
+    width: 398px;
+    height: 398px;
+    object-fit: cover;
+  }
+
+  /* ========================================
+   * Info bar (shipping details)
+   * ======================================== */
+  .cta-section__info {
+    position: absolute;
+    top: 707px;
+    left: calc(50% - 161px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 322px;
+  }
+
+  .cta-section__info-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .cta-section__info-icon {
+    width: 21.38px;
+  }
+
+  .cta-section__info-text {
+    color: var(--eerie-black);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.90px;
+    line-height: 31.5px;
+  }
+
+  /* ========================================
+   * Product cards (chicken & fish)
+   * ======================================== */
+  .cta-section__products {
+    position: absolute;
+    top: 386px;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    padding: 0 36px;
+    box-sizing: border-box;
+  }
+
+  .cta-section__product-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 171px;
+    text-decoration: none;
+  }
+
+  .cta-section__product-image {
+    width: 127px;
+    height: 228px;
+    object-fit: cover;
+  }
+
+  /* ========================================
+   * Product badges (flavor labels)
+   * ======================================== */
+  .cta-section__product-badge {
+    position: absolute;
+  }
+
+  .cta-section__product-badge--chicken {
+    top: 169px;
+    left: -10px;
+    width: 91px;
+    height: 91px;
+  }
+
+  .cta-section__product-badge--fish {
+    top: 194px;
+    right: -10px;
+    width: 84px;
+    height: 41px;
+  }
+
+  /* ========================================
+   * Product CTA buttons
+   * ======================================== */
+  .cta-section__product-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 171px;
+    height: 43px;
+    margin-top: 10px;
+    overflow: hidden;
+    border-radius: 49px;
+  }
+
+  .cta-section__product-button--chicken {
+    background-color: var(--cerise);
+    animation: cta-glow-chicken 2s ease-in-out infinite;
+  }
+
+  .cta-section__product-button--fish {
+    background-color: var(--lochmara);
+    animation: cta-glow-fish 2s ease-in-out infinite;
+  }
+
+  .cta-section__product-button--chicken::after,
+  .cta-section__product-button--fish::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.25) 50%, transparent 100%);
+    animation: cta-shine 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .cta-section__product-button-text {
+    color: var(--white);
+    font-size: 12.2px;
+    font-weight: 900;
+    letter-spacing: 0.61px;
+    text-align: center;
+  }
+
+  .cta-section__product-button-arrow {
+    width: 6px;
+    height: 11px;
+  }
+
+  /* ========================================
+   * Price area
+   * ======================================== */
+  .cta-section__price-area {
+    position: absolute;
+    top: 233px;
+    left: 76px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 296px;
+  }
+
+  .cta-section__price-header {
+    display: inline-flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 7px;
+  }
+
+  .cta-section__price-deco--left {
+    width: 19.66px;
+    height: 32.17px;
+    transform: rotate(180deg);
+  }
+
+  .cta-section__price-deco--left img:first-child {
+    width: 18px;
+    height: 32px;
+  }
+
+  .cta-section__price-deco--left img:last-child {
+    width: 11px;
+    height: 14px;
+  }
+
+  .cta-section__price-deco--right {
+    width: 19.66px;
+    height: 32.17px;
+  }
+
+  .cta-section__price-deco--right img:first-child {
+    width: 18px;
+    height: 32px;
+  }
+
+  .cta-section__price-deco--right img:last-child {
+    width: 11px;
+    height: 14px;
+  }
+
+  .cta-section__price-label {
+    color: var(--orange);
+    font-size: 16.1px;
+    font-weight: 700;
+    letter-spacing: 0.32px;
+  }
+
+  .cta-section__price-value {
+    width: 296px;
+    height: 80px;
+    animation: price-pulse 2s ease-in-out infinite;
+  }
+
+  /* ========================================
+   * Keyframe animations
+   * ======================================== */
+  @keyframes cta-glow-chicken {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(211, 41, 129, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 12px 4px rgba(211, 41, 129, 0.25);
+    }
+  }
+
+  @keyframes cta-glow-fish {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(0, 114, 187, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 12px 4px rgba(0, 114, 187, 0.25);
+    }
+  }
+
+  @keyframes cta-shine {
+    0% {
+      left: -100%;
+    }
+    20% {
+      left: 100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+
+  @keyframes price-pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.03);
+    }
+  }
+</style>

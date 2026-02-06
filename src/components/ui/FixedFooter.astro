@@ -1,0 +1,165 @@
+---
+---
+
+<aside class="fixed-footer">
+  <div class="fixed-footer__bg"></div>
+  <div class="fixed-footer__inner">
+    <img class="fixed-footer__product" src="/img/product-chicken-small.webp" alt="商品画像" />
+    <div class="fixed-footer__info">
+      <div class="fixed-footer__badge">お一人様1回限り</div>
+      <div class="fixed-footer__price-row">
+        <img class="fixed-footer__price-img" src="/img/footer-price.svg" alt="800円(税込) 2kg / 送料当社負担" />
+        <a href="https://www.petlineonline.com/shop/r/r102017/?__lt__cid=4acdc244-e52f-47e7-b483-e62d82cf9b26%EF%BC%89GF2%E7%A8%AE%E3%81%BE%E3%81%A8%E3%82%81%E3%83%9A%E3%83%BC%E3%82%B8" data-lp="grainfree" data-cta="footer" class="fixed-footer__btn">
+          <span class="fixed-footer__btn-text">今すぐ試す</span>
+          <img class="fixed-footer__btn-arrow" src="/img/footer-arrow.svg" alt="" />
+        </a>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<style>
+  /* ==========================================
+     Fixed footer container & background
+     ========================================== */
+  .fixed-footer {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 440px;
+    height: 110px;
+    z-index: 1000;
+  }
+
+  .fixed-footer__bg {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(255, 233, 216, 0.8);
+  }
+
+  /* ==========================================
+     Inner layout
+     ========================================== */
+  .fixed-footer__inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    height: 110px;
+    padding: 0 20px;
+  }
+
+  .fixed-footer__product {
+    flex-shrink: 0;
+    width: 50px;
+    height: 88px;
+    object-fit: cover;
+  }
+
+  .fixed-footer__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  /* ==========================================
+     Badge & price
+     ========================================== */
+  .fixed-footer__badge {
+    padding: 1px 16px;
+    border: 1px solid var(--orange);
+    color: var(--orange);
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .fixed-footer__price-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 14px;
+  }
+
+  .fixed-footer__price-img {
+    width: auto;
+    height: 57px;
+  }
+
+  /* ==========================================
+     CTA button
+     ========================================== */
+  .fixed-footer__btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    gap: 8px;
+    height: 44px;
+    padding: 0 20px;
+    overflow: hidden;
+    background-color: var(--orange);
+    border-radius: 52px;
+    text-decoration: none;
+    cursor: pointer;
+    animation: cta-glow 2s ease-in-out infinite;
+  }
+
+  .fixed-footer__btn:hover {
+    opacity: 0.9;
+  }
+
+  .fixed-footer__btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.25) 50%, transparent 100%);
+    animation: cta-shine 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  /* ==========================================
+     Button inner elements
+     ========================================== */
+  .fixed-footer__btn-text {
+    color: var(--white);
+    font-size: var(--font-size-s);
+    font-weight: 900;
+  }
+
+  .fixed-footer__btn-arrow {
+    width: 8px;
+    height: 16px;
+  }
+
+  /* ==========================================
+     Keyframe animations
+     ========================================== */
+  @keyframes cta-glow {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(255, 81, 0, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 12px 4px rgba(255, 81, 0, 0.25);
+    }
+  }
+
+  @keyframes cta-shine {
+    0% {
+      left: -100%;
+    }
+    20% {
+      left: 100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+</style>

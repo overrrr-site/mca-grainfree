@@ -1,0 +1,350 @@
+---
+---
+
+<div class="section" style="background:#f5f8f1">
+  <div class="screen-wrapper">
+    <div class="features screen">
+      <div class="features__header">
+        <div class="features__header-inner">
+          <div class="features__label">REASON</div>
+          <h1 class="features__title">3つの特徴</h1>
+        </div>
+        <div class="features__description">「グレインフリー」とは、小麦やトウモロコシなどの穀類を使用していないフードのことです。穀類の消化が苦手なワンちゃんや、アレルギーが気になる飼い主さんに選ばれています。</div>
+      </div>
+      <div class="features__card features__card--01">
+        <img class="features__card-image features__card-image--01" src="/img/features-grain-free.webp" alt="穀類不使用" />
+        <div class="features__card-content features__card-content--01">
+          <div class="features__card-heading">穀類不使用で<br />穀類アレルギーに配慮</div>
+          <div class="features__card-text">穀類アレルギーをもつ愛犬も美味しく食事を楽しめるように、原材料に穀類を使用していません。</div>
+        </div>
+        <div class="features__card-number features__card-number--01">
+          <div class="features__card-number-circle"><div class="features__card-number-text">01</div></div>
+        </div>
+      </div>
+      <img class="features__line features__line--01" src="/img/features-line.svg" alt="" />
+      <div class="features__card features__card--02">
+        <img class="features__card-image features__card-image--02" src="/img/features-protein.webp" alt="高たんぱく" />
+        <div class="features__card-content features__card-content--02">
+          <div class="features__card-heading features__card-heading--02">肉類を第一主原料とした<br />高たんぱく設計</div>
+          <div class="features__card-text"><span>たんぱく質は、愛犬の健康で元気なカラダをつくる重要な栄養素。<br /></span><span class="features__card-note">※メディコートお腹から健康サポート1歳から比約115%</span></div>
+        </div>
+        <div class="features__card-number features__card-number--02">
+          <div class="features__card-number-ellipse"></div>
+          <div class="features__card-number-text features__card-number-text--abs">02</div>
+        </div>
+      </div>
+      <img class="features__line features__line--02" src="/img/features-line.svg" alt="" />
+      <div class="features__card features__card--03">
+        <div class="features__card-rect"></div>
+        <img class="features__card-image features__card-image--03" src="/img/features-skin-coat.svg" alt="皮膚と毛艶" />
+        <div class="features__card-content features__card-content--03">
+          <div class="features__card-heading">健康で美しい皮膚と<br />毛艶に配慮</div>
+          <div class="features__card-text">DHA・EPAを豊富に含む魚とフィッシュオイルを使用し健康で美しい皮膚や毛艶に貢献します。</div>
+        </div>
+        <div class="features__card-number features__card-number--03">
+          <div class="features__card-number-ellipse"></div>
+          <div class="features__card-number-text features__card-number-text--abs">03</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* ----------------------------------------
+     Section & Screen Base
+     ---------------------------------------- */
+  .section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding-bottom: 55px;
+    scroll-snap-align: start;
+  }
+
+  .screen-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ----------------------------------------
+     Features Container
+     ---------------------------------------- */
+  .features {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 440px !important;
+    height: 959px !important;
+    overflow: hidden !important;
+    background-color: var(--background-03);
+    will-change: transform;
+  }
+
+  /* ----------------------------------------
+     Header
+     ---------------------------------------- */
+  .features__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    width: 394px;
+    height: 145px;
+    margin-left: 31px;
+    margin-top: 101px;
+  }
+
+  .features__header-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    width: fit-content;
+  }
+
+  .features__label {
+    align-self: stretch;
+    color: var(--orange);
+    font-size: var(--font-size-s);
+    font-weight: 700;
+    letter-spacing: 0.70px;
+    text-align: center;
+  }
+
+  .features__title {
+    align-self: stretch;
+    color: var(--brown-title-text);
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 1.80px;
+  }
+
+  .features__description {
+    align-self: stretch;
+    height: 59px;
+    color: var(--brown-title-text);
+    font-size: var(--font-size-s);
+    font-weight: 500;
+    letter-spacing: -0.42px;
+    line-height: 18px;
+    text-align: center;
+  }
+
+  /* ----------------------------------------
+     Cards (shared)
+     ---------------------------------------- */
+  .features__card {
+    position: relative;
+    margin-left: 36px;
+  }
+
+  .features__card--01 {
+    width: 376px;
+    height: 165px;
+    margin-top: 19px;
+  }
+
+  .features__card--02 {
+    width: 371px;
+    height: 168px;
+    margin-top: 20px;
+  }
+
+  .features__card--03 {
+    width: 371px;
+    height: 167px;
+    margin-top: 20px;
+  }
+
+  /* ----------------------------------------
+     Card Images
+     ---------------------------------------- */
+  .features__card-image--01 {
+    position: absolute;
+    top: 14.55%;
+    left: 0;
+    width: 33.78%;
+    height: 75.15%;
+  }
+
+  .features__card-image--02 {
+    position: absolute;
+    top: 10.12%;
+    left: 0;
+    width: 34.23%;
+    height: 73.81%;
+  }
+
+  .features__card-rect {
+    position: absolute;
+    top: 10.18%;
+    left: 0;
+    width: 34.23%;
+    height: 74.25%;
+    background-color: var(--white);
+    border-radius: 5px;
+  }
+
+  .features__card-image--03 {
+    position: absolute;
+    top: 26.95%;
+    left: 4.04%;
+    width: 26.42%;
+    height: 43.11%;
+  }
+
+  /* ----------------------------------------
+     Card Content (per-variant position)
+     ---------------------------------------- */
+  .features__card-content--01 {
+    left: 41.22%;
+    width: 58.78%;
+  }
+
+  .features__card-content--02 {
+    left: 41.78%;
+    width: 58.22%;
+  }
+
+  .features__card-content--03 {
+    left: 40.97%;
+    width: 59.03%;
+  }
+
+  /* Card Content (shared layout) */
+  .features__card-content--01,
+  .features__card-content--02,
+  .features__card-content--03 {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 9px;
+    height: 100%;
+  }
+
+  /* ----------------------------------------
+     Card Typography
+     ---------------------------------------- */
+  .features__card-heading {
+    margin-top: -1px;
+    color: var(--green);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 30px;
+  }
+
+  .features__card-heading--02 {
+    width: fit-content;
+    margin-right: -13px;
+    letter-spacing: -1.32px;
+  }
+
+  .features__card-text {
+    align-self: stretch;
+    color: var(--black);
+    font-size: var(--font-size-l);
+    font-weight: 500;
+    letter-spacing: 0.80px;
+    line-height: 22px;
+  }
+
+  .features__card-note {
+    color: var(--black);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.07px;
+    line-height: 17px;
+  }
+
+  /* ----------------------------------------
+     Card Numbers
+     ---------------------------------------- */
+  .features__card-number--01 {
+    position: absolute;
+    top: 4.85%;
+    left: 29.26%;
+    display: flex;
+    width: 9.04%;
+    height: 20.61%;
+  }
+
+  .features__card-number-circle {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 34px;
+    height: 34px;
+    padding: 5px 8px;
+    background-color: var(--green);
+    border-radius: 17px;
+  }
+
+  .features__card-number--02,
+  .features__card-number--03 {
+    position: absolute;
+    top: 0;
+    left: 29.65%;
+    width: 9.70%;
+    height: 20.24%;
+  }
+
+  .features__card-number--03 {
+    height: 20.36%;
+  }
+
+  .features__card-number-ellipse {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 94.44%;
+    height: 100%;
+    background-color: var(--green);
+    border-radius: 17px;
+  }
+
+  .features__card-number-text {
+    color: var(--white);
+    font-size: var(--font-size-l);
+    font-weight: 900;
+    letter-spacing: 0.80px;
+  }
+
+  .features__card-number-text--abs {
+    position: absolute;
+    top: 13.49%;
+    left: 23.75%;
+    width: 47.22%;
+    height: 67.65%;
+  }
+
+  /* ----------------------------------------
+     Divider Lines
+     ---------------------------------------- */
+  .features__line {
+    align-self: center;
+    width: 400px;
+    height: 1px;
+    object-fit: cover;
+  }
+
+  .features__line--01 {
+    margin-top: 5px;
+  }
+
+  .features__line--02 {
+    margin-top: 21px;
+  }
+</style>

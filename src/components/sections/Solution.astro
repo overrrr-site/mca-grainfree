@@ -1,0 +1,334 @@
+---
+---
+
+<div class="section">
+  <div class="screen-wrapper">
+    <div class="solution screen">
+      <img class="solution__bg" src="/img/solution-bg-texture.webp" alt="" />
+      <div class="solution__header">
+        <div class="solution__title">そんな飼い主さんのために。</div>
+        <img class="solution__title-decoration" src="/img/solution-title-deco.webp" alt="" />
+      </div>
+      <div class="solution__image-container">
+        <img class="solution__image" src="/img/solution-dog.webp" alt="犬" />
+        <div class="solution__card"></div>
+      </div>
+      <h1 class="solution__product-name">メディコートアドバンス<br />グレインフリー</h1>
+      <div class="solution__fish">
+        <img class="solution__fish-img" src="/img/product-fish.webp" alt="フィッシュ味" />
+        <img class="solution__fish-badge" src="/img/badge-fish.svg" alt="フィッシュ味" />
+      </div>
+      <div class="solution__chicken">
+        <img class="solution__chicken-img" src="/img/product-chicken.webp" alt="チキン味" />
+        <img class="solution__chicken-badge" src="/img/badge-chicken.svg" alt="チキン味" />
+      </div>
+      <div class="solution__label" style="background-image: url('/img/solution-label-bg.svg'); background-size: 100% 100%;"></div>
+      <img class="solution__gf-badge" src="/img/solution-gf-badge.webp" alt="グレインフリー" />
+      <a href="#cta" data-lp="grainfree" data-cta="solution" class="solution__cta">
+        <div class="solution__cta-badge">
+          <div class="solution__cta-badge-text">お一人様1回限りの限定価格</div>
+        </div>
+        <div class="solution__cta-price">たっぷり試せる2kgが800円</div>
+        <div class="solution__cta-button">
+          <div class="solution__cta-button-bg"></div>
+          <img class="solution__cta-button-arrow" src="/img/solution-cta-arrow.svg" alt="" />
+          <div class="solution__cta-button-text">今すぐ試す</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Section & wrapper */
+  .section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-bottom: 55px;
+    overflow: hidden;
+    scroll-snap-align: start;
+    background: url('/img/solution-bg-texture.webp') repeat center center;
+    background-size: 440px auto;
+  }
+
+  .screen-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Main screen */
+  .solution {
+    position: relative;
+    width: 440px !important;
+    height: 959px !important;
+    background-color: var(--background-02);
+    overflow: hidden !important;
+    will-change: transform;
+  }
+
+  /* Background image */
+  .solution__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 440px;
+    height: 958px;
+    object-fit: cover;
+  }
+
+  /* Header */
+  .solution__header {
+    position: absolute;
+    top: 82px;
+    left: 51px;
+    width: 339px;
+    height: 48px;
+  }
+
+  .solution__title {
+    position: absolute;
+    top: 0;
+    left: 30px;
+    color: var(--orange);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    letter-spacing: 0.44px;
+    line-height: normal;
+  }
+
+  .solution__title-decoration {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 337px;
+    height: 45px;
+  }
+
+  /* Image container & card */
+  .solution__image-container {
+    position: absolute;
+    top: 128px;
+    left: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 393px;
+  }
+
+  .solution__image {
+    width: 137px;
+    height: 177px;
+    object-fit: cover;
+  }
+
+  .solution__card {
+    align-self: stretch;
+    width: 100%;
+    height: 559px;
+    margin-top: -44px;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px #0000000d;
+  }
+
+  /* Product name */
+  .solution__product-name {
+    position: absolute;
+    top: 308px;
+    left: calc(50% - 131px);
+    color: var(--orange);
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: -1.25px;
+    line-height: 32px;
+    text-align: center;
+  }
+
+  /* Fish product */
+  .solution__fish {
+    position: absolute;
+    top: 421px;
+    left: 234px;
+    width: 155px;
+    height: 242px;
+  }
+
+  .solution__fish-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 127px;
+    height: 228px;
+    object-fit: cover;
+  }
+
+  .solution__fish-badge {
+    position: absolute;
+    top: 202px;
+    left: 71px;
+    width: 84px;
+    height: 41px;
+  }
+
+  /* Chicken product */
+  .solution__chicken {
+    position: absolute;
+    top: 421px;
+    left: 42px;
+    width: 163px;
+    height: 277px;
+  }
+
+  .solution__chicken-img {
+    position: absolute;
+    top: 0;
+    left: 36px;
+    width: 127px;
+    height: 228px;
+    object-fit: cover;
+  }
+
+  .solution__chicken-badge {
+    position: absolute;
+    top: 167px;
+    left: -8px;
+    width: 110px;
+    height: 110px;
+  }
+
+  /* Labels & badges */
+  .solution__label {
+    position: absolute;
+    top: 368px;
+    left: calc(50% - 141px);
+    width: 282px;
+    height: 38px;
+  }
+
+  .solution__gf-badge {
+    position: absolute;
+    top: 347px;
+    left: 314px;
+    width: 73px;
+    height: 50px;
+    object-fit: cover;
+  }
+
+  /* CTA area */
+  .solution__cta {
+    position: absolute;
+    top: 678px;
+    left: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 241px;
+    gap: 8px;
+  }
+
+  .solution__cta-badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 168px;
+    height: 26px;
+    padding: 1px 12px;
+    gap: 10px;
+    border: 1px solid var(--orange);
+  }
+
+  .solution__cta-badge-text {
+    color: var(--orange);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: -0.12px;
+    line-height: 18px;
+    white-space: nowrap;
+  }
+
+  .solution__cta-price {
+    color: var(--black);
+    font-size: var(--font-size-l);
+    font-weight: 700;
+    letter-spacing: 0.80px;
+    text-align: center;
+  }
+
+  /* CTA button */
+  .solution__cta-button {
+    position: relative;
+    width: 243px;
+    height: 56px;
+  }
+
+  .solution__cta-button-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 241px;
+    height: 56px;
+    background-color: var(--orange);
+    border-radius: 85.91px;
+    overflow: hidden;
+    animation: cta-glow 2s ease-in-out infinite;
+  }
+
+  .solution__cta-button-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.25) 50%, transparent 100%);
+    animation: cta-shine 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .solution__cta-button-arrow {
+    position: absolute;
+    top: 20px;
+    left: 206px;
+    width: 10px;
+    height: 17px;
+  }
+
+  .solution__cta-button-text {
+    position: absolute;
+    top: 10px;
+    left: 60px;
+    color: var(--white);
+    font-size: 21.5px;
+    font-weight: 900;
+    letter-spacing: 1.07px;
+    line-height: normal;
+  }
+
+  /* Animations */
+  @keyframes cta-glow {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(255, 81, 0, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 12px 4px rgba(255, 81, 0, 0.25);
+    }
+  }
+
+  @keyframes cta-shine {
+    0% {
+      left: -100%;
+    }
+    20% {
+      left: 100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+</style>
