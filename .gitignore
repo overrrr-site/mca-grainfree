@@ -22,3 +22,6 @@ pnpm-debug.log*
 # IDE
 .idea/
 .vscode/
+
+# Reference files
+_reference/
