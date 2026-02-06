@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_2" data-name="レイヤー 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58.7 58.77">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke-width: .7px;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+        stroke: #5e4a21;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-2 {
+        stroke-width: .7px;
+      }
+
+      .cls-3 {
+        stroke-width: .73px;
+      }
+
+      .cls-4 {
+        fill: #5e4a21;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <g id="_レイヤー_1-2" data-name="レイヤー 1">
+    <g>
+      <g>
+        <polyline class="cls-1" points="7.67 25.02 9.84 19.24 12.01 25.02"/>
+        <line class="cls-1" x1="8.39" y1="23.11" x2="11.29" y2="23.11"/>
+        <polyline class="cls-1" points="35.01 25.02 37.18 19.24 39.35 25.02"/>
+        <line class="cls-1" x1="35.73" y1="23.11" x2="38.63" y2="23.11"/>
+        <g>
+          <line class="cls-1" x1="14.14" y1="25.02" x2="14.14" y2="20.71"/>
+          <path class="cls-1" d="m14.14,22.44c0-.85.65-1.55,1.45-1.55h0c.8,0,1.45.69,1.45,1.55v2.58"/>
+          <path class="cls-1" d="m17.04,22.47c0-.85.65-1.55,1.45-1.55h0c.8,0,1.45.69,1.45,1.55v2.58"/>
+        </g>
+        <g>
+          <line class="cls-1" x1="25.07" y1="25.02" x2="25.07" y2="20.71"/>
+          <path class="cls-1" d="m25.07,22.44c0-.85.65-1.55,1.45-1.55h0c.8,0,1.45.69,1.45,1.55v2.58"/>
+        </g>
+        <line class="cls-1" x1="22.42" y1="25.02" x2="22.42" y2="20.71"/>
+        <ellipse class="cls-4" cx="22.42" cy="19.18" rx=".33" ry=".35"/>
+        <line class="cls-1" x1="45.61" y1="25.02" x2="45.61" y2="20.71"/>
+        <ellipse class="cls-4" cx="45.61" cy="19.18" rx=".33" ry=".35"/>
+        <rect class="cls-1" x="30.23" y="20.93" width="2.89" height="4.09" rx="1.3" ry="1.3"/>
+        <path class="cls-1" d="m43.57,24.48c-.29.33-.72.53-1.19.53h0c-.87,0-1.58-.69-1.58-1.55v-1c0-.85.71-1.55,1.58-1.55h0c.51,0,.96.23,1.25.6"/>
+        <g>
+          <rect class="cls-1" x="47.74" y="20.93" width="2.89" height="4.09" rx="1.3" ry="1.3"/>
+          <line class="cls-1" x1="50.63" y1="18.83" x2="50.63" y2="25.05"/>
+        </g>
+      </g>
+      <g>
+        <polyline class="cls-3" points="25.66 31.5 33.04 31.5 25.66 42.14 33.04 42.14"/>
+        <g>
+          <line class="cls-3" x1="37.49" y1="42.14" x2="37.49" y2="34.44"/>
+          <path class="cls-3" d="m42.63,42.14v-4.81c0-1.42-1.15-2.57-2.57-2.57h0c-1.42,0-2.57,1.15-2.57,2.57v4.12"/>
+        </g>
+        <g>
+          <line class="cls-3" x1="14.97" y1="36.82" x2="22.17" y2="36.82"/>
+          <line class="cls-3" x1="18.57" y1="33.22" x2="18.57" y2="40.42"/>
+        </g>
+      </g>
+      <polygon class="cls-2" points="41.36 .35 17.34 .35 .35 17.36 .35 41.41 17.34 58.42 41.36 58.42 58.35 41.41 58.35 17.36 41.36 .35"/>
+    </g>
+  </g>
+</svg>

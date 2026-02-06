@@ -1,0 +1,241 @@
+---
+---
+
+<div class="section" style="background:#fefbf4">
+  <div class="screen-wrapper">
+    <div class="faq screen">
+      <div class="faq__container">
+        <div class="faq__header">
+          <div class="faq__label">Q&A</div>
+          <h1 class="faq__title">よくあるご質問</h1>
+        </div>
+        <div class="faq__content">
+          <div class="faq__card">
+            <div class="faq__items">
+              <div class="faq__item faq__item--first">
+                <div class="faq__item-inner">
+                  <div class="faq__item-badge"><div class="faq__item-badge-text">Q</div></div>
+                  <div class="faq__item-text"><span class="faq__item-question">突然フードを切り替えても大丈夫？<br /></span><span class="faq__item-answer">今までのフードに少量混ぜ、1週間から10日<br />くらい時間をかけて切り替えてください。</span></div>
+                </div>
+              </div>
+              <div class="faq__divider"></div>
+              <div class="faq__item">
+                <div class="faq__item-inner">
+                  <div class="faq__item-badge"><div class="faq__item-badge-text">Q</div></div>
+                  <div class="faq__item-text"><span class="faq__item-question">療法食から切り替えてもいい？<br /></span><span class="faq__item-answer">獣医師の指示なく切り替えて与えないでくだ<br />さい。</span></div>
+                </div>
+              </div>
+              <div class="faq__divider"></div>
+              <div class="faq__item">
+                <div class="faq__item-inner">
+                  <div class="faq__item-badge"><div class="faq__item-badge-text">Q</div></div>
+                  <div class="faq__item-text"><span class="faq__item-question">どのように保管すればいい？<br /></span><span class="faq__item-answer">高温多湿を避け、直射日光が当たらない涼し<br />い場所で保管してください。</span></div>
+                </div>
+              </div>
+              <div class="faq__divider"></div>
+              <div class="faq__item">
+                <div class="faq__item-inner">
+                  <div class="faq__item-badge"><div class="faq__item-badge-text">Q</div></div>
+                  <div class="faq__item-text"><span class="faq__item-question">原材料も国産ですか？<br /></span><span class="faq__item-answer">原材料は国産に限らず、品質基準を満たした<br />世界各国の原材料を使用しています。</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="faq__footer">
+            <a href="https://www.petline.co.jp/privacy/" target="_blank"><span class="faq__footer-link">プライバシーポリシー</span></a><span class="faq__footer-spacer">&emsp;&emsp;</span><a href="https://www.petline.co.jp/regulation/" target="_blank"><span class="faq__footer-link">利用規約</span></a><span class="faq__footer-spacer">&emsp;&emsp;</span><a href="https://www.petlineonline.com/shop/pages/law.aspx" target="_blank"><span class="faq__footer-link">特定商取引法に基づく表記</span></a><br /><span class="faq__footer-copyright">&copy; 2025 ペットライン株式会社</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* ==========================================
+     Section & Screen base styles (scoped)
+     ========================================== */
+  .section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-bottom: 55px;
+    overflow: hidden;
+    box-sizing: border-box;
+    scroll-snap-align: start;
+  }
+
+  .screen-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ==========================================
+     FAQ section container
+     ========================================== */
+  .faq {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 37px;
+    width: 440px !important;
+    height: 959px !important;
+    overflow: hidden !important;
+    background-color: var(--background-02);
+    will-change: transform;
+  }
+
+  .faq__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 65px;
+    width: 400px;
+    height: 711px;
+    margin-top: 101px;
+    margin-left: 20px;
+  }
+
+  /* ==========================================
+     Header (Q&A label + title)
+     ========================================== */
+  .faq__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    width: fit-content;
+  }
+
+  .faq__label {
+    align-self: stretch;
+    color: var(--orange);
+    font-size: var(--font-size-s);
+    font-weight: 700;
+    letter-spacing: 0.70px;
+    text-align: center;
+  }
+
+  .faq__title {
+    align-self: stretch;
+    color: var(--brown-title-text);
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 1.80px;
+    text-align: center;
+  }
+
+  /* ==========================================
+     Content area & card
+     ========================================== */
+  .faq__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    width: 100%;
+  }
+
+  .faq__card {
+    width: 400px;
+    height: 483px;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px #0000000d;
+  }
+
+  /* ==========================================
+     FAQ items list
+     ========================================== */
+  .faq__items {
+    position: relative;
+    top: 34px;
+    left: 21px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 23px;
+    width: 358px;
+  }
+
+  .faq__item-inner {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 11px;
+  }
+
+  .faq__item-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 29px;
+    height: 29px;
+    padding: 2px 8px;
+    background-color: var(--green);
+    border-radius: 14.5px;
+  }
+
+  .faq__item-badge-text {
+    color: var(--white);
+    font-size: var(--font-size-l);
+    font-weight: 900;
+    letter-spacing: 0.80px;
+  }
+
+  .faq__item-text {
+    letter-spacing: 0.45px;
+    line-height: 23px;
+  }
+
+  .faq__item-question {
+    color: var(--eerie-black);
+    font-size: var(--font-size-m);
+    font-weight: 700;
+    letter-spacing: 0.07px;
+  }
+
+  .faq__item-answer {
+    color: var(--eerie-black);
+    font-size: var(--font-size-m);
+    font-weight: 500;
+    letter-spacing: 0.07px;
+  }
+
+  .faq__divider {
+    align-self: stretch;
+    width: 100%;
+    height: 0;
+    border-top: 1px dashed #d9d9d9;
+  }
+
+  /* ==========================================
+     Footer links & copyright
+     ========================================== */
+  .faq__footer {
+    color: var(--stack);
+    font-size: var(--font-size-xxxs);
+    font-weight: 500;
+    letter-spacing: -0.10px;
+    line-height: 18px;
+    text-align: center;
+  }
+
+  .faq__footer-link {
+    letter-spacing: -0.01px;
+    text-decoration: underline;
+  }
+
+  .faq__footer-spacer {
+    letter-spacing: -0.01px;
+  }
+
+  .faq__footer-copyright {
+    letter-spacing: -0.01px;
+  }
+</style>
