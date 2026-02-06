@@ -55,7 +55,7 @@
           <div class="reviews__card-content">
             <div class="reviews__card-heading">他ブランドから切替</div>
             <div class="reviews__card-divider"></div>
-            <div class="reviews__card-text"><span>他のグレインフリーからの切り替えです。</span><span class="reviews__card-highlight">原材料や成分は同等以上。</span><span>この価格では有り得ない※よく出来たドッグフードだと思います。</span><span class="reviews__card-note">※お試し価格のこと。通常価格は店頭でご確認ください</span></div>
+            <div class="reviews__card-text"><span>他のグレインフリーからの切り替えです。</span><span class="reviews__card-highlight">原材料や成分は同等以上。</span><span>この価格<span class="reviews__card-asterisk">※</span>では有り得ないよく出来たドッグフードだと思います。</span><span class="reviews__card-note">※お試し価格のこと。通常価格は店頭でご確認ください</span></div>
           </div>
           <div class="reviews__card-author">yo3さん・1〜7歳</div>
         </div>
@@ -273,6 +273,12 @@
     font-weight: 700 !important;
   }
 
+  .reviews__card-asterisk {
+    font-size: 12px;
+    vertical-align: super;
+    line-height: 0;
+  }
+
   .reviews__card-note {
     display: block;
     color: var(--black);
@@ -285,7 +291,7 @@
 
   .reviews__card-author {
     align-self: stretch;
-    color: #b8b8b8;
+    color: #888888;
     font-size: var(--font-size-s);
     font-weight: 500;
     letter-spacing: -0.14px;

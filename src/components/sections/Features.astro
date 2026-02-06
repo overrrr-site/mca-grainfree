@@ -25,7 +25,7 @@
       <div class="features__card features__card--02">
         <img class="features__card-image features__card-image--02" src="/img/features-protein.webp" alt="高たんぱく" />
         <div class="features__card-content features__card-content--02">
-          <div class="features__card-heading features__card-heading--02">肉類を第一主原料とした<br />高たんぱく※設計</div>
+          <div class="features__card-heading features__card-heading--02">肉類を第一主原料とした<br />高たんぱく<span class="features__card-asterisk">※</span>設計</div>
           <div class="features__card-text"><span>たんぱく質は、愛犬の健康で元気なカラダをつくる重要な栄養素。<br /></span><span class="features__card-note">※メディコートお腹から健康サポート1歳から比約115%</span></div>
         </div>
         <div class="features__card-number features__card-number--02">
@@ -259,8 +259,14 @@
     line-height: 22px;
   }
 
+  .features__card-asterisk {
+    font-size: 12px;
+    vertical-align: super;
+    line-height: 0;
+  }
+
   .features__card-note {
-    color: var(--black);
+    color: #565656;
     font-size: 12px;
     font-weight: 400;
     letter-spacing: 0.07px;
