@@ -1,15 +1,5 @@
 {
   "framework": "astro",
-  "rewrites": [
-    {
-      "source": "/hospital",
-      "destination": "https://hospital-overrrr.vercel.app/index.html"
-    },
-    {
-      "source": "/hospital/:path*",
-      "destination": "https://hospital-overrrr.vercel.app/:path*"
-    }
-  ],
   "headers": [
     {
       "source": "/img/(.*)",
