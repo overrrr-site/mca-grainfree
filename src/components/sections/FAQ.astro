@@ -1,4 +1,47 @@
 ---
+type FAQ = { q: string; a: string };
+const faqs: FAQ[] = [
+  {
+    q: '1回限りのお試し購入で、自動継続はありますか？',
+    a: 'ありません。今回のご注文はお試し価格でのお届け1回限りで、定期購入や継続課金には一切なりません。気に入っていただけた場合は、改めて通常価格でご購入いただく形になります。',
+  },
+  {
+    q: '愛犬に合わなかった場合はどうすればいいですか？',
+    a: '体質には個体差があるため、すべての子に合うとは限りません。便がゆるくなる、食いつきが悪いなどの様子が見られた場合は、無理に与え続けず使用を中止してください。お試し価格でご用意しているのも、まずは少量から愛犬の反応を確かめていただきたいという考えからです。',
+  },
+  {
+    q: 'アレルギーが心配です。原材料を教えてもらえますか？',
+    a: '穀類（小麦・トウモロコシ等）は使用していません。チキン味は鶏肉、フィッシュ味は魚を主原料としています。詳細な原材料・成分表は商品ページに記載しております。気になる食材がある場合は、事前にご確認ください。',
+  },
+  {
+    q: '突然フードを切り替えても大丈夫？',
+    a: '今までのフードに少量混ぜ、1週間から10日くらい時間をかけて切り替えてください。急な切り替えは消化器官に負担がかかることがあります。',
+  },
+  {
+    q: '療法食から切り替えてもいい？',
+    a: '獣医師の指示なく切り替えて与えないでください。',
+  },
+  {
+    q: 'シニア犬や子犬にも与えられますか？',
+    a: '成犬から高齢犬まで幅広い年齢の愛犬にお与えいただけます。粒が小さめなのでシニア犬にも食べやすい設計です。ただし、離乳前の子犬や持病のある愛犬への給与は、念のため獣医師にご相談ください。',
+  },
+  {
+    q: 'チキン味とフィッシュ味、どちらを選べばいいですか？',
+    a: '初めてグレインフリーを試される方や、ジャーキー・鶏ささみが好きな子にはチキン味がおすすめです。皮膚や毛艶のケアを意識したい方、お魚好きの子にはDHA・EPAを豊富に含むフィッシュ味をお選びください。',
+  },
+  {
+    q: 'どのように保管すればいい？',
+    a: '高温多湿を避け、直射日光が当たらない涼しい場所で保管してください。500gの小分けパックなので、開封後も鮮度が保ちやすくなっています。',
+  },
+  {
+    q: '原材料も国産ですか？',
+    a: '原材料は国産に限らず、品質基準を満たした世界各国の原材料を使用しています。製造は岐阜県多治見市の自社工場で行っており、ISO22000認証を取得しています。',
+  },
+  {
+    q: 'お届けはどのくらいで届きますか？',
+    a: 'ご注文確定後、通常〇営業日以内に発送いたします。配送状況により前後する場合がありますが、詳細は注文確認メールでお知らせします。',
+  },
+];
 ---
 
 <div class="section" style="background:#fefbf4">
@@ -12,33 +55,19 @@
         <div class="faq__content">
           <div class="faq__card">
             <div class="faq__items">
-              <div class="faq__item faq__item--first">
-                <div class="faq__item-inner">
-                  <div class="faq__item-badge"><div class="faq__item-badge-text">Q</div></div>
-                  <div class="faq__item-text"><span class="faq__item-question">突然フードを切り替えても大丈夫？<br /></span><span class="faq__item-answer">今までのフードに少量混ぜ、1週間から10日<br />くらい時間をかけて切り替えてください。</span></div>
-                </div>
-              </div>
-              <div class="faq__divider"></div>
-              <div class="faq__item">
-                <div class="faq__item-inner">
-                  <div class="faq__item-badge"><div class="faq__item-badge-text">Q</div></div>
-                  <div class="faq__item-text"><span class="faq__item-question">療法食から切り替えてもいい？<br /></span><span class="faq__item-answer">獣医師の指示なく切り替えて与えないでくだ<br />さい。</span></div>
-                </div>
-              </div>
-              <div class="faq__divider"></div>
-              <div class="faq__item">
-                <div class="faq__item-inner">
-                  <div class="faq__item-badge"><div class="faq__item-badge-text">Q</div></div>
-                  <div class="faq__item-text"><span class="faq__item-question">どのように保管すればいい？<br /></span><span class="faq__item-answer">高温多湿を避け、直射日光が当たらない涼し<br />い場所で保管してください。</span></div>
-                </div>
-              </div>
-              <div class="faq__divider"></div>
-              <div class="faq__item">
-                <div class="faq__item-inner">
-                  <div class="faq__item-badge"><div class="faq__item-badge-text">Q</div></div>
-                  <div class="faq__item-text"><span class="faq__item-question">原材料も国産ですか？<br /></span><span class="faq__item-answer">原材料は国産に限らず、品質基準を満たした<br />世界各国の原材料を使用しています。</span></div>
-                </div>
-              </div>
+              {faqs.map((f) => (
+                <details class="faq__item">
+                  <summary class="faq__item-summary">
+                    <span class="faq__item-badge"><span class="faq__item-badge-text">Q</span></span>
+                    <span class="faq__item-question">{f.q}</span>
+                    <span class="faq__item-toggle" aria-hidden="true"></span>
+                  </summary>
+                  <div class="faq__item-answer-wrap">
+                    <span class="faq__item-badge faq__item-badge--a"><span class="faq__item-badge-text">A</span></span>
+                    <p class="faq__item-answer">{f.a}</p>
+                  </div>
+                </details>
+              ))}
             </div>
           </div>
           <div class="faq__footer">
@@ -93,9 +122,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 65px;
+    gap: 48px;
     width: 400px;
-    height: 711px;
+    height: auto;
+    min-height: 711px;
     margin-top: 101px;
     margin-left: 20px;
   }
@@ -142,33 +172,59 @@
 
   .faq__card {
     width: 400px;
-    height: 483px;
+    height: auto;
+    min-height: 553px;
+    padding: 28px 0;
     background-color: var(--white);
     border-radius: 10px;
     box-shadow: 3px 3px 5px #0000000d;
+    overflow: hidden;
+    box-sizing: border-box;
   }
 
   /* ==========================================
      FAQ items list
      ========================================== */
   .faq__items {
-    position: relative;
-    top: 34px;
-    left: 21px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 23px;
+    margin: 0 21px;
+    gap: 0;
     width: 358px;
   }
 
-  .faq__item-inner {
-    display: inline-flex;
-    align-items: flex-start;
+  /* ==========================================
+     FAQ item (accordion)
+     ========================================== */
+  .faq__item {
+    border-top: 1px dashed #d9d9d9;
+    padding: 12px 0;
+  }
+
+  .faq__item:first-of-type {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .faq__item-summary {
+    display: flex;
+    align-items: center;
     gap: 11px;
+    cursor: pointer;
+    list-style: none;
+    outline-offset: 2px;
+  }
+
+  .faq__item-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq__item-summary::marker {
+    content: '';
   }
 
   .faq__item-badge {
+    flex: 0 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -179,6 +235,11 @@
     padding: 2px 8px;
     background-color: var(--green);
     border-radius: 14.5px;
+    box-sizing: border-box;
+  }
+
+  .faq__item-badge--a {
+    background-color: var(--orange);
   }
 
   .faq__item-badge-text {
@@ -188,30 +249,65 @@
     letter-spacing: 0.80px;
   }
 
-  .faq__item-text {
-    letter-spacing: 0.45px;
-    line-height: 23px;
-  }
-
   .faq__item-question {
+    flex: 1;
     color: var(--eerie-black);
     font-size: var(--font-size-m);
     font-weight: 700;
     letter-spacing: 0.07px;
+    line-height: 23px;
+  }
+
+  /* +/− toggle icon (CSS only) */
+  .faq__item-toggle {
+    flex: 0 0 auto;
+    position: relative;
+    width: 14px;
+    height: 14px;
+  }
+
+  .faq__item-toggle::before,
+  .faq__item-toggle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: var(--brown-title-text);
+    transition: transform 0.2s ease;
+  }
+
+  .faq__item-toggle::before {
+    width: 14px;
+    height: 2px;
+    transform: translate(-50%, -50%);
+  }
+
+  .faq__item-toggle::after {
+    width: 2px;
+    height: 14px;
+    transform: translate(-50%, -50%);
+  }
+
+  .faq__item[open] .faq__item-toggle::after {
+    transform: translate(-50%, -50%) scaleY(0);
+  }
+
+  /* Answer area */
+  .faq__item-answer-wrap {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    margin-top: 10px;
   }
 
   .faq__item-answer {
+    flex: 1;
+    margin: 0;
     color: var(--eerie-black);
     font-size: var(--font-size-m);
     font-weight: 500;
     letter-spacing: 0.07px;
-  }
-
-  .faq__divider {
-    align-self: stretch;
-    width: 100%;
-    height: 0;
-    border-top: 1px dashed #d9d9d9;
+    line-height: 23px;
   }
 
   /* ==========================================
