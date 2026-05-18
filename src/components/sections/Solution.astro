@@ -23,11 +23,9 @@
         <img class="solution__chicken-badge" src="/img/badge-chicken.svg" alt="チキン味" loading="lazy" />
       </div>
       <div class="solution__chicken-assist">
-        <p class="solution__assist-title">🐔 チキン味</p>
         <p class="solution__assist-desc">迷ったらこちら。<br />初めての方・お肉派の子向け。</p>
       </div>
       <div class="solution__fish-assist">
-        <p class="solution__assist-title">🐟 フィッシュ味</p>
         <p class="solution__assist-desc">皮膚や毛艶が気になる子に。<br />DHA・EPA豊富。</p>
       </div>
       <div class="solution__label" style="background-image: url('/img/solution-label-bg.svg'); background-size: 100% 100%;"></div>
@@ -42,6 +40,7 @@
           <img class="solution__cta-button-arrow" src="/img/solution-cta-arrow.svg" alt="" loading="lazy" />
           <div class="solution__cta-button-text">今すぐ試す</div>
         </div>
+        <p class="solution__cta-note">お届けは1回のみ。自動継続はありません。</p>
       </a>
     </div>
   </div>
@@ -178,7 +177,7 @@
 
   .solution__fish-badge {
     position: absolute;
-    top: 188px;
+    top: 202px;
     left: 71px;
     width: 84px;
     height: 41px;
@@ -232,7 +231,7 @@
   .solution__chicken-assist,
   .solution__fish-assist {
     position: absolute;
-    top: 631px;
+    top: 651px;
     width: 156px;
     text-align: center;
   }
@@ -245,21 +244,8 @@
     left: 220px;
   }
 
-  .solution__assist-title,
   .solution__assist-desc {
     margin: 0;
-  }
-
-  .solution__assist-title {
-    color: var(--brown-title-text);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.05px;
-    line-height: 18px;
-  }
-
-  .solution__assist-desc {
-    margin-top: 2px;
     color: var(--stack);
     font-size: 11px;
     font-weight: 500;
@@ -355,6 +341,16 @@
     font-weight: 900;
     letter-spacing: 1.07px;
     line-height: normal;
+  }
+
+  .solution__cta-note {
+    margin: 0;
+    color: var(--stack);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.03px;
+    line-height: 16px;
+    text-align: center;
   }
 
   /* Animations */
