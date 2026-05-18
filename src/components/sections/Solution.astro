@@ -22,6 +22,14 @@
         <img class="solution__chicken-img" src="/img/product-chicken.webp" alt="チキン味" loading="lazy" />
         <img class="solution__chicken-badge" src="/img/badge-chicken.svg" alt="チキン味" loading="lazy" />
       </div>
+      <div class="solution__chicken-assist">
+        <p class="solution__assist-title">🐔 チキン味</p>
+        <p class="solution__assist-desc">迷ったらこちら。<br />初めての方・お肉派の子向け。</p>
+      </div>
+      <div class="solution__fish-assist">
+        <p class="solution__assist-title">🐟 フィッシュ味</p>
+        <p class="solution__assist-desc">皮膚や毛艶が気になる子に。<br />DHA・EPA豊富。</p>
+      </div>
       <div class="solution__label" style="background-image: url('/img/solution-label-bg.svg'); background-size: 100% 100%;"></div>
       <img class="solution__gf-badge" src="/img/solution-gf-badge.webp" alt="グレインフリー" loading="lazy" />
       <a href="#cta" data-lp="grainfree" data-cta="solution" class="solution__cta">
@@ -140,7 +148,7 @@
   /* Product name */
   .solution__product-name {
     position: absolute;
-    top: 308px;
+    top: 288px;
     left: calc(50% - 131px);
     color: var(--orange);
     font-size: 25px;
@@ -153,7 +161,7 @@
   /* Fish product */
   .solution__fish {
     position: absolute;
-    top: 421px;
+    top: 401px;
     left: 234px;
     width: 155px;
     height: 242px;
@@ -170,7 +178,7 @@
 
   .solution__fish-badge {
     position: absolute;
-    top: 202px;
+    top: 188px;
     left: 71px;
     width: 84px;
     height: 41px;
@@ -179,7 +187,7 @@
   /* Chicken product */
   .solution__chicken {
     position: absolute;
-    top: 421px;
+    top: 401px;
     left: 42px;
     width: 163px;
     height: 277px;
@@ -205,7 +213,7 @@
   /* Labels & badges */
   .solution__label {
     position: absolute;
-    top: 368px;
+    top: 348px;
     left: calc(50% - 141px);
     width: 282px;
     height: 38px;
@@ -213,17 +221,56 @@
 
   .solution__gf-badge {
     position: absolute;
-    top: 347px;
+    top: 327px;
     left: 314px;
     width: 73px;
     height: 50px;
     object-fit: cover;
   }
 
+  /* Product assist copy (below product images) */
+  .solution__chicken-assist,
+  .solution__fish-assist {
+    position: absolute;
+    top: 631px;
+    width: 156px;
+    text-align: center;
+  }
+
+  .solution__chicken-assist {
+    left: 64px;
+  }
+
+  .solution__fish-assist {
+    left: 220px;
+  }
+
+  .solution__assist-title,
+  .solution__assist-desc {
+    margin: 0;
+  }
+
+  .solution__assist-title {
+    color: var(--brown-title-text);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05px;
+    line-height: 18px;
+  }
+
+  .solution__assist-desc {
+    margin-top: 2px;
+    color: var(--stack);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.02px;
+    line-height: 15px;
+  }
+
   /* CTA area */
   .solution__cta {
     position: absolute;
-    top: 678px;
+    top: 685px;
     left: 100px;
     display: flex;
     flex-direction: column;
