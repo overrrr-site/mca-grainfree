@@ -19,7 +19,7 @@
           <img class="cta-section__product-image" src="/img/product-chicken.webp" alt="チキン味" loading="lazy" />
           <img class="cta-section__product-badge cta-section__product-badge--chicken" src="/img/badge-chicken.svg" alt="チキン味" loading="lazy" />
           <div class="cta-section__product-button cta-section__product-button--chicken">
-            <span class="cta-section__product-button-text">今すぐ試す</span>
+            <span class="cta-section__product-button-text">2kgで相性を試す</span>
             <img src="/img/cta-button-arrow.svg" alt="" class="cta-section__product-button-arrow" loading="lazy" />
           </div>
         </a>
@@ -27,7 +27,7 @@
           <img class="cta-section__product-image" src="/img/product-fish.webp" alt="フィッシュ味" loading="lazy" />
           <img class="cta-section__product-badge cta-section__product-badge--fish" src="/img/badge-fish.svg" alt="フィッシュ味" loading="lazy" />
           <div class="cta-section__product-button cta-section__product-button--fish">
-            <span class="cta-section__product-button-text">今すぐ試す</span>
+            <span class="cta-section__product-button-text">2kgで相性を試す</span>
             <img src="/img/cta-button-arrow.svg" alt="" class="cta-section__product-button-arrow" loading="lazy" />
           </div>
         </a>
@@ -63,7 +63,7 @@
     height: 100dvh;
     min-height: 100vh;
     min-height: 100dvh;
-    padding-bottom: 55px;
+    padding-bottom: 60px;
     overflow: hidden;
     box-sizing: border-box;
     scroll-snap-align: start;
@@ -210,7 +210,7 @@
     gap: 10px;
     width: 171px;
     height: 43px;
-    margin-top: 10px;
+    margin-top: 40px;
     overflow: hidden;
     border-radius: 49px;
   }
@@ -240,9 +240,9 @@
 
   .cta-section__product-button-text {
     color: var(--white);
-    font-size: 12.2px;
+    font-size: 15px;
     font-weight: 900;
-    letter-spacing: 0.61px;
+    letter-spacing: 0.3px;
     text-align: center;
   }
 
@@ -267,38 +267,33 @@
 
   .cta-section__price-header {
     display: inline-flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    gap: 7px;
+    gap: 10px;
+  }
+
+  .cta-section__price-deco {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    flex-shrink: 0;
   }
 
   .cta-section__price-deco--left {
-    width: 19.66px;
-    height: 32.17px;
     transform: rotate(180deg);
   }
 
-  .cta-section__price-deco--left img:first-child {
+  .cta-section__price-deco img {
+    display: block;
+  }
+
+  .cta-section__price-deco img:first-child {
     width: 18px;
     height: 32px;
   }
 
-  .cta-section__price-deco--left img:last-child {
-    width: 11px;
-    height: 14px;
-  }
-
-  .cta-section__price-deco--right {
-    width: 19.66px;
-    height: 32.17px;
-  }
-
-  .cta-section__price-deco--right img:first-child {
-    width: 18px;
-    height: 32px;
-  }
-
-  .cta-section__price-deco--right img:last-child {
+  .cta-section__price-deco img:last-child {
     width: 11px;
     height: 14px;
   }

@@ -5,11 +5,13 @@ import Problem from '../components/sections/Problem.astro';
 import Solution from '../components/sections/Solution.astro';
 import Features from '../components/sections/Features.astro';
 import Ingenuity from '../components/sections/Ingenuity.astro';
+import WhyTwoKg from '../components/sections/WhyTwoKg.astro';
 import Reviews from '../components/sections/Reviews.astro';
 import About from '../components/sections/About.astro';
 import Caution from '../components/sections/Caution.astro';
 import CTA from '../components/sections/CTA.astro';
 import FAQ from '../components/sections/FAQ.astro';
+import FAQ2 from '../components/sections/FAQ2.astro';
 ---
 
 <Layout title="メディコートアドバンス グレインフリー">
@@ -18,11 +20,13 @@ import FAQ from '../components/sections/FAQ.astro';
   <Solution />
   <Features />
   <Ingenuity />
+  <WhyTwoKg />
   <Reviews />
   <About />
   <Caution />
   <CTA />
   <FAQ />
+  <FAQ2 />
 </Layout>
 
 <style is:global>
@@ -132,7 +136,7 @@ import FAQ from '../components/sections/FAQ.astro';
 
   const carousels: Record<string, CarouselState> = {
     feature: { current: 0, total: 3, dragging: false, startX: 0, startY: 0, startTime: 0, currentTranslateX: 0, directionLocked: null, scale: 1 },
-    voice:   { current: 0, total: 4, dragging: false, startX: 0, startY: 0, startTime: 0, currentTranslateX: 0, directionLocked: null, scale: 1 },
+    voice:   { current: 0, total: 6, dragging: false, startX: 0, startY: 0, startTime: 0, currentTranslateX: 0, directionLocked: null, scale: 1 },
     honesty: { current: 0, total: 3, dragging: false, startX: 0, startY: 0, startTime: 0, currentTranslateX: 0, directionLocked: null, scale: 1 },
   };
 
@@ -387,6 +391,20 @@ import FAQ from '../components/sections/FAQ.astro';
       }) as EventListener, { passive: true });
     });
   }
+
+  /* ============================================
+     FAQ accordion: exclusive open (fallback for browsers
+     that don't support <details name="...">)
+     ============================================ */
+  document.addEventListener('toggle', (e) => {
+    const target = e.target as HTMLDetailsElement | null;
+    if (!target || target.tagName !== 'DETAILS') return;
+    const groupName = target.getAttribute('name');
+    if (!groupName || !target.open) return;
+    document.querySelectorAll<HTMLDetailsElement>(`details[name="${groupName}"]`).forEach((other) => {
+      if (other !== target) other.open = false;
+    });
+  }, true);
 
   /* ============================================
      Initialization

@@ -55,9 +55,31 @@
           <div class="reviews__card-content">
             <div class="reviews__card-heading">他ブランドから切替</div>
             <div class="reviews__card-divider"></div>
-            <div class="reviews__card-text"><span>他のグレインフリーからの切り替えです。</span><span class="reviews__card-highlight">原材料や成分は同等以上。</span><span>この価格<span class="reviews__card-asterisk">※</span>では有り得ないよく出来たドッグフードだと思います。</span><span class="reviews__card-note">※お試し価格のこと。通常価格は店頭でご確認ください</span></div>
+            <div class="reviews__card-text"><span>他のグレインフリーからの切り替えです。</span><span class="reviews__card-highlight">原材料や成分は同等以上。</span><span>この価格<span class="reviews__card-asterisk">※</span>では有り得ない</span><span class="reviews__card-highlight">よく出来たドッグフード</span><span>だと思います。</span><span class="reviews__card-note">※お試し価格のこと。通常価格は店頭でご確認ください</span></div>
           </div>
           <div class="reviews__card-author">yo3さん・1〜7歳</div>
+        </div>
+      </div>
+      <div class="reviews__card main_05">
+        <div class="reviews__stars">★★★★<span class="reviews__star-empty">★</span></div>
+        <div class="reviews__card-body">
+          <div class="reviews__card-content">
+            <div class="reviews__card-heading">2kgあったから良かった</div>
+            <div class="reviews__card-divider"></div>
+            <div class="reviews__card-text"><span>うちの子は新しいフードに警戒心が強く、最初の数日は食べ進みが遅かったです。少量サンプルだったら諦めていたかも。</span><span class="reviews__card-highlight">2kgあったから時間をかけて切り替えられて</span><span>、今ではむしろ前のフードよりよく食べるように。</span></div>
+          </div>
+          <div class="reviews__card-author">ゆうこさん・1〜7歳</div>
+        </div>
+      </div>
+      <div class="reviews__card main_06">
+        <div class="reviews__stars">★★★★★</div>
+        <div class="reviews__card-body">
+          <div class="reviews__card-content">
+            <div class="reviews__card-heading">2頭ともよく食べました</div>
+            <div class="reviews__card-divider"></div>
+            <div class="reviews__card-text"><span>2頭の小型犬を飼っていて、片方が好き嫌いが激しいタイプ。チキン味を試したところ、</span><span class="reviews__card-highlight">両方ともしっかり完食</span><span>。小分けパックなので、</span><span class="reviews__card-highlight">開けたてのおいしさが続く</span><span>のも嬉しいポイント。</span></div>
+          </div>
+          <div class="reviews__card-author">たけしさん・1〜10歳</div>
         </div>
       </div>
       <img class="reviews__dog-image" src="/img/reviews-dog.webp" alt="" loading="lazy" />
@@ -81,7 +103,7 @@
     min-height: 100dvh;
     overflow: hidden;
     box-sizing: border-box;
-    padding-bottom: 55px;
+    padding-bottom: 60px;
     scroll-snap-align: start;
   }
 
@@ -216,6 +238,10 @@
     line-height: 1;
   }
 
+  .reviews__star-empty {
+    color: #d9d9d9;
+  }
+
   .reviews__card-body {
     position: absolute;
     top: 54px;
@@ -239,7 +265,7 @@
 
   .reviews__card-heading {
     align-self: stretch;
-    color: var(--black);
+    color: var(--eerie-black);
     font-size: 24px;
     font-weight: 700;
     letter-spacing: 1.20px;
@@ -256,7 +282,7 @@
   .reviews__card-text {
     align-self: stretch;
     height: 206px;
-    color: var(--black);
+    color: var(--eerie-black);
     font-size: var(--font-size-l);
     font-weight: 400;
     letter-spacing: 0.16px;
