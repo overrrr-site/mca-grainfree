@@ -37,6 +37,7 @@
           <img class="solution__cta-button-arrow" src="/img/solution-cta-arrow.svg" alt="" loading="lazy" />
           <div class="solution__cta-button-text">今すぐ試す</div>
         </div>
+        <p class="solution__cta-microcopy">お届けは1回のみ。自動継続なし。</p>
       </a>
     </div>
   </div>
@@ -57,6 +58,10 @@
     overflow: hidden;
     scroll-snap-align: start;
     background-color: var(--background-02);
+    background-image: url('/img/solution-bg-texture.webp');
+    background-repeat: repeat;
+    background-position: top left;
+    background-size: 440px auto;
   }
 
   .screen-wrapper {
@@ -96,7 +101,9 @@
   .solution__title {
     position: absolute;
     top: 0;
-    left: 30px;
+    left: 0;
+    width: 100%;
+    text-align: center;
     color: var(--orange);
     font-size: var(--font-size-xl);
     font-weight: 700;
@@ -132,7 +139,7 @@
   .solution__card {
     align-self: stretch;
     width: 100%;
-    height: 580px;
+    height: 600px;
     margin-top: -36px;
     background-color: var(--white);
     border-radius: 10px;
@@ -257,6 +264,23 @@
     align-items: center;
     width: 241px;
     gap: 6px;
+    text-decoration: none;
+  }
+
+  .solution__cta-microcopy {
+    margin: 0;
+    color: #444;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.03px;
+    line-height: 16px;
+    text-align: center;
+  }
+
+  .solution__cta-microcopy::before {
+    content: '✓ ';
+    color: var(--orange);
+    font-weight: 700;
   }
 
   .solution__cta-badge {
