@@ -45,4 +45,9 @@
     calc(100vw / (var(--design-w) * 1px)),
     calc(100svh / (var(--design-h) * 1px))
   );
+
+  /* Width-only scale, capped at 1. Used by elements that must shrink
+     horizontally on narrow viewports but should keep their native size
+     on >=440px (e.g. the fixed footer). */
+  --scale-w: min(1, calc(100vw / (var(--design-w) * 1px)));
 }
