@@ -29,8 +29,20 @@
   --font-size-l: 16px;
   --font-size-xl: 22px;
 
-  /* Layout — reference values used by JS scaling logic */
-  --design-width: 440px;
-  --design-height: 959px;
+  /* Layout — design canvas reference (unitless for calc math) */
+  --design-w: 440;
+  --design-h: 959;
   --footer-height: 120px;
+
+  /* CSS-only viewport scaling.
+     - dividing a length by a length yields a unitless ratio, so each
+       calc() multiplies the unitless design dim by 1px first.
+     - capped at 1 so the screen never grows past the 440px lp-wrapper
+       on tall/wide viewports (matches the old Math.min(vw, 440)/440 cap).
+     - svh ignores iOS Safari address-bar growth/shrink. */
+  --scale: min(
+    1,
+    calc(100vw / (var(--design-w) * 1px)),
+    calc(100svh / (var(--design-h) * 1px))
+  );
 }

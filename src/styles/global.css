@@ -43,3 +43,16 @@ textarea {
 button {
   cursor: pointer;
 }
+
+/* CSS-only viewport scaling — replaces the old JS applyScale().
+   Each section's inner .screen keeps its 440x959 design coords;
+   the wrapper reserves the post-scale box so layout doesn't collapse. */
+.screen {
+  transform: scale(var(--scale));
+  transform-origin: top left;
+}
+
+.screen-wrapper {
+  width: calc(var(--design-w) * var(--scale) * 1px);
+  height: calc(var(--design-h) * var(--scale) * 1px);
+}

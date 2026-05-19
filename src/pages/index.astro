@@ -143,15 +143,19 @@ import FAQ2 from '../components/sections/FAQ2.astro';
   };
 
   /* ============================================
-     Scale factor helper
+     Scale factor helper — reads the computed transform
+     matrix of the section's .screen (set by CSS --scale).
      ============================================ */
   function getScale(name: string): number {
     const section = document.querySelector(`[data-carousel-section="${name}"]`);
     if (!section) return 1;
-    const screen = section.closest('.screen') as HTMLElement;
+    const screen = section.closest('.screen') as HTMLElement | null;
     if (!screen) return 1;
-    const match = screen.style.transform.match(/scale\(([^)]+)\)/);
-    return match ? parseFloat(match[1]) : 1;
+    const matrix = getComputedStyle(screen).transform;
+    if (!matrix || matrix === 'none') return 1;
+    const match = matrix.match(/matrix\(([^,]+),/);
+    const value = match ? parseFloat(match[1]) : NaN;
+    return Number.isFinite(value) && value > 0 ? value : 1;
   }
 
   /* ============================================

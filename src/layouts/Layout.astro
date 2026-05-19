@@ -70,31 +70,8 @@ const { title } = Astro.props;
 </style>
 
 <script>
-  const DESIGN_WIDTH = 440;
-  const DESIGN_HEIGHT = 959;
-
-  function applyScale() {
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
-    const scaleX = Math.min(vw, DESIGN_WIDTH) / DESIGN_WIDTH;
-    const scaleY = vh / DESIGN_HEIGHT;
-    const scale = Math.min(scaleX, scaleY);
-    const scaledW = DESIGN_WIDTH * scale;
-    const scaledH = DESIGN_HEIGHT * scale;
-
-    document.querySelectorAll<HTMLElement>('.screen').forEach((s) => {
-      s.style.transform = `scale(${scale})`;
-      s.style.transformOrigin = 'top left';
-    });
-
-    document.querySelectorAll<HTMLElement>('.screen-wrapper').forEach((w) => {
-      w.style.width = `${scaledW}px`;
-      w.style.height = `${scaledH}px`;
-    });
-  }
-
-  window.addEventListener('DOMContentLoaded', applyScale);
-  window.addEventListener('resize', applyScale);
+  /* Scaling is handled by CSS (.screen / .screen-wrapper + --scale in
+     variables.css). No JS needed for layout sizing. */
 
   /* CTA smooth-scroll */
   document.addEventListener('click', (e) => {
