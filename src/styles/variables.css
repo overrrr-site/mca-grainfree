@@ -14,6 +14,14 @@
   --white: #ffffff;
   --black: #000000;
 
+  /* Grayscale / UI accents */
+  --gray-line: #d9d9d9;   /* dashed dividers, dot background */
+  --text-note: #565656;   /* annotations / 注釈テキスト */
+  --text-author: #888888; /* review author / 著者テキスト */
+
+  /* Brand orange as RGB channels — for rgba() glows (e.g. CTA button) */
+  --orange-rgb: 255, 80, 0;
+
   /* Background colors */
   --background-01: #fcf5e8;
   --background-02: #fefbf4;
@@ -32,5 +40,9 @@
   /* Layout — reference values used by JS scaling logic */
   --design-width: 440px;
   --design-height: 959px;
+  /* Fixed footer is 110px tall and always pinned to the bottom.
+     Sections reserve half that (55px) as bottom padding so centered
+     content clears the footer without doubling the gap. */
   --footer-height: 110px;
+  --section-bottom-padding: 55px;
 }
