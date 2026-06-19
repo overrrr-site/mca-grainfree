@@ -70,17 +70,6 @@ const { title } = Astro.props;
 </style>
 
 <script>
-  /* Scaling is handled by CSS (.screen / .screen-wrapper + --scale in
-     variables.css). No JS needed for layout sizing. */
-
-  /* CTA smooth-scroll */
-  document.addEventListener('click', (e) => {
-    const link = (e.target as HTMLElement).closest('a[href="#cta"]');
-    if (!link) return;
-    e.preventDefault();
-    const target = document.getElementById('cta');
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
+  import { initSmoothScroll } from '../scripts/smooth-scroll';
+  initSmoothScroll();
 </script>
