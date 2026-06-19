@@ -1,0 +1,188 @@
+---
+const CHECKS = [
+  '数日経っても、飽きずに食べてくれるか',
+  'お腹の調子は、安定しているか',
+  '今のフードから、スムーズに切り替えられるか',
+  '毛艶や元気さに、変化があるか',
+];
+---
+
+<div class="section" style="background:#fefbf4">
+  <div class="screen-wrapper">
+    <div class="why screen">
+      <div class="why__header">
+        <div class="why__label">WHY 2kg</div>
+        <h1 class="why__title">2kgあるから、<br />相性が見えてくる。</h1>
+      </div>
+
+      <p class="why__lead">
+        ひと口、ふた口、食べてくれた。<br />
+        それだけでは、本当に合うかは分かりません。<br />
+        愛犬との相性は、もう少し先に見えてきます。
+      </p>
+
+      <ul class="why__checks">
+        {CHECKS.map((text) => (
+          <li class="why__check-item">
+            <span class="why__check-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M2.5 7.2L5.5 10.2L11.5 4.2" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="why__check-text">{text}</span>
+          </li>
+        ))}
+      </ul>
+
+      <p class="why__body">
+        だから私たちは、2kgでお試しいただけるようにしました。<br />
+        ゆっくり、1〜2週間かけて切り替えながら、<br />
+        愛犬の様子を見てあげてください。
+      </p>
+
+      <img class="why__image" src="/img/why2kg.webp" alt="" loading="lazy" />
+    </div>
+  </div>
+</div>
+
+<style>
+  .section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-bottom: 60px;
+    overflow: hidden;
+    box-sizing: border-box;
+    scroll-snap-align: start;
+  }
+
+  .screen-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .why {
+    position: relative;
+    width: 440px !important;
+    height: 959px !important;
+    overflow: hidden !important;
+    background-color: var(--background-02);
+    will-change: transform;
+  }
+
+  /* Header */
+  .why__header {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .why__label {
+    color: var(--orange);
+    font-size: var(--font-size-s);
+    font-weight: 700;
+    letter-spacing: 0.70px;
+  }
+
+  .why__title {
+    margin: 8px 0 0;
+    color: var(--brown-title-text);
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 1.80px;
+    line-height: 52px;
+  }
+
+  /* Lead text */
+  .why__lead {
+    position: absolute;
+    top: 215px;
+    left: 20px;
+    width: 400px;
+    margin: 0;
+    color: var(--eerie-black);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.07px;
+    line-height: 26px;
+    text-align: center;
+  }
+
+  /* Checks (white card) */
+  .why__checks {
+    position: absolute;
+    top: 310px;
+    left: 20px;
+    width: 400px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 13px 20px;
+    list-style: none;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px #0000000d;
+  }
+
+  .why__check-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 0;
+  }
+
+  .why__check-item + .why__check-item {
+    border-top: 1px dashed #e8e8e8;
+  }
+
+  .why__check-icon {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background-color: var(--green);
+    border-radius: 12px;
+  }
+
+  .why__check-text {
+    flex: 1;
+    color: var(--eerie-black);
+    font-size: 14.5px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    line-height: 22px;
+  }
+
+  /* Body text */
+  .why__body {
+    position: absolute;
+    top: 525px;
+    left: 20px;
+    width: 400px;
+    margin: 0;
+    color: var(--eerie-black);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.07px;
+    line-height: 26px;
+    text-align: center;
+  }
+
+  /* Dog image */
+  .why__image {
+    position: absolute;
+    top: 597px;
+    left: calc(50% - 121px);
+    width: 242px;
+    height: 242px;
+    object-fit: contain;
+  }
+</style>

@@ -7,6 +7,7 @@
       <div class="ingenuity__header">
         <div class="ingenuity__label">FEATURE</div>
         <h1 class="ingenuity__title">愛犬のための工夫</h1>
+        <div class="ingenuity__description">毎日のごはんが、もっと食べやすく、もっとおいしく。<br />小さな工夫を、たくさん詰め込みました。</div>
       </div>
       <div class="ingenuity__bg-card ingenuity__bg-card--left"></div>
       <div class="ingenuity__bg-card ingenuity__bg-card--right"></div>
@@ -55,6 +56,25 @@
   /* ----------------------------------------
      Section & Screen Base
      ---------------------------------------- */
+  .section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding-bottom: 60px;
+    scroll-snap-align: start;
+  }
+
+  .screen-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
 
   /* ----------------------------------------
      Ingenuity Container
@@ -73,13 +93,13 @@
      ---------------------------------------- */
   .ingenuity__header {
     position: absolute;
-    top: 101px;
-    left: 108px;
+    top: 86px;
+    left: 23px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 7px;
-    width: 225px;
+    width: 394px;
   }
 
   .ingenuity__label {
@@ -92,13 +112,22 @@
   }
 
   .ingenuity__title {
-    width: 317px;
-    margin-left: -46px;
-    margin-right: -46px;
+    align-self: stretch;
     color: var(--brown-title-text);
     font-size: 36px;
     font-weight: 700;
     letter-spacing: 1.80px;
+    text-align: center;
+  }
+
+  .ingenuity__description {
+    align-self: stretch;
+    margin-top: 4px;
+    color: var(--eerie-black);
+    font-size: var(--font-size-s);
+    font-weight: 500;
+    letter-spacing: -0.42px;
+    line-height: 22px;
     text-align: center;
   }
 
@@ -196,7 +225,7 @@
   }
 
   .ingenuity__card-heading {
-    color: var(--black);
+    color: var(--eerie-black);
     font-size: var(--font-size-xl);
     font-weight: 700;
     letter-spacing: 1.10px;
@@ -205,7 +234,7 @@
 
   .ingenuity__card-text {
     align-self: stretch;
-    color: var(--black);
+    color: var(--eerie-black);
     font-size: var(--font-size-l);
     font-weight: 500;
     letter-spacing: 0.80px;

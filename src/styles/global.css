@@ -25,74 +25,6 @@ img {
   display: block;
 }
 
-/* ==========================================
-   Section / screen layout (shared by every
-   section component — full-screen scroll-snap
-   stage holding the 440×959 design canvas)
-   ========================================== */
-.section {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  height: 100dvh;
-  min-height: 100vh;
-  min-height: 100dvh;
-  padding-bottom: var(--section-bottom-padding);
-  overflow: hidden;
-  scroll-snap-align: start;
-}
-
-.screen-wrapper {
-  position: relative;
-  overflow: hidden;
-  width: var(--screen-w, var(--design-width));
-  height: var(--screen-h, var(--design-height));
-}
-
-/* Viewport scaling — driven by --screen-scale,
-   set pre-paint by the inline script in Layout */
-.screen {
-  transform: scale(var(--screen-scale, 1));
-  transform-origin: top left;
-}
-
-/* ==========================================
-   Carousel nav buttons — tokenized circle fill
-   ========================================== */
-.slider-btn svg circle {
-  fill: var(--orange);
-}
-
-.caution .slider-btn svg circle {
-  fill: var(--green);
-}
-
-/* ==========================================
-   Shared CTA button animations
-   ========================================== */
-@keyframes cta-glow {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(var(--orange-rgb), 0.4);
-  }
-  50% {
-    box-shadow: 0 0 12px 4px rgba(var(--orange-rgb), 0.25);
-  }
-}
-
-@keyframes cta-shine {
-  0% {
-    left: -100%;
-  }
-  20% {
-    left: 100%;
-  }
-  100% {
-    left: 100%;
-  }
-}
-
 a {
   text-decoration: none;
   color: inherit;
@@ -110,4 +42,17 @@ textarea {
 
 button {
   cursor: pointer;
+}
+
+/* CSS-only viewport scaling — replaces the old JS applyScale().
+   Each section's inner .screen keeps its 440x959 design coords;
+   the wrapper reserves the post-scale box so layout doesn't collapse. */
+.screen {
+  transform: scale(var(--scale));
+  transform-origin: top left;
+}
+
+.screen-wrapper {
+  width: calc(var(--design-w) * var(--scale) * 1px);
+  height: calc(var(--design-h) * var(--scale) * 1px);
 }

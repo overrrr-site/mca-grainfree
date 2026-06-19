@@ -1,0 +1,306 @@
+---
+const FAQS = [
+  // 商品について
+  {
+    q: 'チキン味とフィッシュ味、どちらを選べばいいですか？',
+    a: '初めてグレインフリーを試される方や、ジャーキー・鶏ささみが好きな子にはチキン味がおすすめです。お魚好きの子にはフィッシュ味をお選びください。',
+  },
+  {
+    q: 'アレルギーが心配です。原材料を教えてもらえますか？',
+    a: '穀類（小麦・トウモロコシ等）は使用していません。詳細な原材料・成分表は商品ページに記載しております。気になる食材がある場合は、事前にご確認ください。',
+  },
+  {
+    q: '原材料も国産ですか？',
+    a: '原材料は国産に限らず、品質基準を満たした世界各国の原材料を使用しています。製造は岐阜県多治見市の自社工場で行っており、ISO22000認証を取得しています。',
+  },
+  // 保管について
+  {
+    q: 'どのように保管すればいい？',
+    a: '高温多湿を避け、直射日光が当たらない涼しい場所で保管してください。500gの小分けパックのため、必要な分だけ開封でき、鮮度を保ちやすくなっています。',
+  },
+  // 発送について
+  {
+    q: 'お届けはどのくらいで届きますか？',
+    a: 'ご注文をお受けしてから通常2営業日以内に、ヤマト運輸にて発送いたします。\n※土・日・祝日の発送は行っておりません。\n※配送時の交通事情や天候などにより遅延等が発生する場合がございます。\n※離島の場合、船便のため天候や海の状況により欠航や遅延する場合がございます。',
+  },
+];
+---
+
+<div class="section" style="background:#fefbf4">
+  <div class="screen-wrapper">
+    <div class="faq2 screen">
+      <div class="faq2__container">
+        <div class="faq2__header">
+          <div class="faq2__label">Q&A</div>
+          <h1 class="faq2__title">よくあるご質問</h1>
+          <div class="faq2__subtitle">商品・保管・発送について</div>
+        </div>
+        <div class="faq2__content">
+          <div class="faq2__card">
+            <div class="faq2__items">
+              {FAQS.map((f) => (
+                <details class="faq2__item" name="faq-group-2">
+                  <summary class="faq2__item-summary">
+                    <span class="faq2__item-badge"><span class="faq2__item-badge-text">Q</span></span>
+                    <span class="faq2__item-question">{f.q}</span>
+                    <span class="faq2__item-toggle" aria-hidden="true"></span>
+                  </summary>
+                  <div class="faq2__item-answer-wrap">
+                    <span class="faq2__item-badge faq2__item-badge--a"><span class="faq2__item-badge-text">A</span></span>
+                    <p class="faq2__item-answer">{f.a}</p>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+          <div class="faq2__footer">
+            <a href="https://www.petline.co.jp/privacy/" target="_blank"><span class="faq2__footer-link">プライバシーポリシー</span></a><span class="faq2__footer-spacer">&emsp;&emsp;</span><a href="https://www.petline.co.jp/regulation/" target="_blank"><span class="faq2__footer-link">利用規約</span></a><span class="faq2__footer-spacer">&emsp;&emsp;</span><a href="https://www.petlineonline.com/shop/pages/law.aspx" target="_blank"><span class="faq2__footer-link">特定商取引法に基づく表記</span></a><br /><span class="faq2__footer-copyright">&copy; 2025 ペットライン株式会社</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-bottom: 60px;
+    overflow: hidden;
+    box-sizing: border-box;
+    scroll-snap-align: start;
+  }
+
+  .screen-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .faq2 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 37px;
+    width: 440px !important;
+    height: 959px !important;
+    overflow: hidden !important;
+    background-color: var(--background-02);
+    will-change: transform;
+  }
+
+  .faq2__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    width: 400px;
+    margin-top: 70px;
+    margin-left: 20px;
+  }
+
+  .faq2__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    width: fit-content;
+  }
+
+  .faq2__label {
+    align-self: stretch;
+    color: var(--orange);
+    font-size: var(--font-size-s);
+    font-weight: 700;
+    letter-spacing: 0.70px;
+    text-align: center;
+  }
+
+  .faq2__title {
+    align-self: stretch;
+    color: var(--brown-title-text);
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 1.80px;
+    text-align: center;
+    margin: 0;
+  }
+
+  .faq2__subtitle {
+    color: var(--brown-title-text);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    text-align: center;
+  }
+
+  .faq2__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    width: 100%;
+  }
+
+  .faq2__card {
+    width: 400px;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px #0000000d;
+    padding: 20px 21px;
+    box-sizing: border-box;
+  }
+
+  .faq2__items {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .faq2__item {
+    border-top: 1px dashed #d9d9d9;
+    padding: 14px 0;
+  }
+
+  .faq2__item:first-of-type {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .faq2__item:last-of-type {
+    padding-bottom: 0;
+  }
+
+  .faq2__item-summary {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    cursor: pointer;
+    list-style: none;
+    outline-offset: 2px;
+  }
+
+  .faq2__item-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq2__item-summary::marker {
+    content: '';
+  }
+
+  .faq2__item-badge {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 29px;
+    height: 29px;
+    background-color: var(--green);
+    border-radius: 14.5px;
+    box-sizing: border-box;
+  }
+
+  .faq2__item-badge--a {
+    background-color: var(--orange);
+  }
+
+  .faq2__item-badge-text {
+    color: var(--white);
+    font-size: var(--font-size-l);
+    font-weight: 900;
+    letter-spacing: 0.80px;
+    line-height: 1;
+  }
+
+  .faq2__item-question {
+    flex: 1;
+    color: var(--eerie-black);
+    font-size: var(--font-size-m);
+    font-weight: 700;
+    letter-spacing: 0.07px;
+    line-height: 23px;
+    padding-top: 3px;
+  }
+
+  .faq2__item-toggle {
+    flex: 0 0 auto;
+    position: relative;
+    width: 14px;
+    height: 14px;
+    margin-top: 8px;
+  }
+
+  .faq2__item-toggle::before,
+  .faq2__item-toggle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: var(--brown-title-text);
+  }
+
+  .faq2__item-toggle::before {
+    width: 14px;
+    height: 2px;
+    transform: translate(-50%, -50%);
+  }
+
+  .faq2__item-toggle::after {
+    width: 2px;
+    height: 14px;
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s ease;
+  }
+
+  .faq2__item[open] .faq2__item-toggle::after {
+    transform: translate(-50%, -50%) scaleY(0);
+  }
+
+  .faq2__item-answer-wrap {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    margin-top: 12px;
+  }
+
+  .faq2__item-answer {
+    flex: 1;
+    margin: 0;
+    padding-top: 3px;
+    color: var(--eerie-black);
+    font-size: var(--font-size-m);
+    font-weight: 500;
+    letter-spacing: 0.07px;
+    line-height: 23px;
+    white-space: pre-line;
+  }
+
+  .faq2__footer {
+    color: var(--stack);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: -0.10px;
+    line-height: 20px;
+    text-align: center;
+  }
+
+  .faq2__footer-link {
+    letter-spacing: -0.01px;
+    text-decoration: underline;
+  }
+
+  .faq2__footer-spacer {
+    letter-spacing: -0.01px;
+  }
+
+  .faq2__footer-copyright {
+    letter-spacing: -0.01px;
+  }
+</style>

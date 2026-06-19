@@ -41,6 +41,25 @@
   /* ========================================
    * Base section & wrapper
    * ======================================== */
+  .section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-bottom: 60px;
+    overflow: hidden;
+    box-sizing: border-box;
+    scroll-snap-align: start;
+  }
+
+  .screen-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
 
   /* ========================================
    * Section root
@@ -137,7 +156,7 @@
     left: 3.32%;
     width: 93.19%;
     height: 100%;
-    color: var(--black);
+    color: var(--eerie-black);
     font-size: 26.8px;
     font-weight: 700;
     letter-spacing: 1.34px;
@@ -153,7 +172,7 @@
     top: 469px;
     left: calc(50% - 195px);
     width: 396px;
-    color: var(--black);
+    color: var(--eerie-black);
     font-size: var(--font-size-s);
     font-weight: 500;
     letter-spacing: 0.70px;
@@ -163,7 +182,7 @@
 
   .about__note {
     position: absolute;
-    top: 804px;
+    top: 814px;
     left: calc(50% + 39px);
     color: #565656;
     font-size: 12px;
@@ -245,7 +264,7 @@
 
   .about__feature-text {
     width: fit-content;
-    color: var(--black);
+    color: var(--eerie-black);
     font-size: 18px;
     font-weight: 700;
     letter-spacing: 0.90px;
@@ -255,7 +274,7 @@
   }
 
   .about__feature-note {
-    color: var(--black);
+    color: var(--eerie-black);
     font-size: var(--font-size-xxxs);
     font-weight: 700;
   }
